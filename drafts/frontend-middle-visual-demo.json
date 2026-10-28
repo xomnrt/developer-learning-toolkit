@@ -1,0 +1,146 @@
+{
+  "id": "frontend-middle-visual-demo",
+  "language": "ru",
+  "title": "Frontend growth roadmap",
+  "subtitle": "A visual demo based on the preserved Junior to Middle source material",
+  "description": "This is a UI demonstration, not a validated personal curriculum.",
+  "nodes": [
+    {
+      "id": "javascript-execution-model",
+      "title": "JavaScript execution model",
+      "summary": "Explain scope, closures, promises, and event-loop ordering.",
+      "phase": "Language foundations",
+      "depends_on": [],
+      "practice": [
+        "Trace callback, microtask, and timer ordering",
+        "Diagnose a stale closure in a small example"
+      ],
+      "mastery": [
+        "Predict execution order before running the code",
+        "Explain the incorrect prediction after verification"
+      ]
+    },
+    {
+      "id": "typescript-boundaries",
+      "title": "TypeScript at system boundaries",
+      "summary": "Model API data and errors without hiding uncertainty behind any.",
+      "phase": "Language foundations",
+      "depends_on": [],
+      "practice": [
+        "Type a small API client",
+        "Narrow an unknown response before use"
+      ],
+      "mastery": [
+        "Represent success and failure as a discriminated union",
+        "Explain what runtime validation TypeScript cannot provide"
+      ]
+    },
+    {
+      "id": "react-rendering-model",
+      "title": "React rendering model",
+      "summary": "Predict why a component renders and verify the prediction.",
+      "phase": "Rendering and state",
+      "depends_on": [
+        "javascript-execution-model"
+      ],
+      "practice": [
+        "Trace state and props through a component tree",
+        "Use React DevTools Profiler to test a hypothesis"
+      ],
+      "mastery": [
+        "Find the cause of an unnecessary rerender",
+        "Justify whether memoization is useful"
+      ]
+    },
+    {
+      "id": "effects-and-async-state",
+      "title": "Effects and asynchronous state",
+      "summary": "Handle cleanup, cancellation, races, and stale responses.",
+      "phase": "Rendering and state",
+      "depends_on": [
+        "javascript-execution-model",
+        "react-rendering-model"
+      ],
+      "practice": [
+        "Repair a request race in a search component",
+        "Explain each effect dependency"
+      ],
+      "mastery": [
+        "Reproduce and remove a stale-response bug",
+        "Verify cleanup during unmount"
+      ]
+    },
+    {
+      "id": "state-architecture",
+      "title": "State ownership and architecture",
+      "summary": "Choose local, shared, server, and derived state boundaries.",
+      "phase": "Application architecture",
+      "depends_on": [
+        "react-rendering-model",
+        "typescript-boundaries"
+      ],
+      "practice": [
+        "Decompose state in a dashboard feature",
+        "Review an unnecessary global-state proposal"
+      ],
+      "mastery": [
+        "Explain ownership and update flows",
+        "Change one requirement without rewriting unrelated layers"
+      ]
+    },
+    {
+      "id": "testing-strategy",
+      "title": "Testing strategy",
+      "summary": "Choose tests from risks and observable behavior.",
+      "phase": "Reliability",
+      "depends_on": [
+        "effects-and-async-state",
+        "state-architecture"
+      ],
+      "practice": [
+        "Test an optimistic update and rollback",
+        "Replace an implementation-detail assertion"
+      ],
+      "mastery": [
+        "Explain which failure each test detects",
+        "Debug a deliberately broken test suite"
+      ]
+    },
+    {
+      "id": "performance-diagnosis",
+      "title": "Performance diagnosis",
+      "summary": "Measure before choosing rendering or loading optimizations.",
+      "phase": "Performance",
+      "depends_on": [
+        "react-rendering-model",
+        "state-architecture"
+      ],
+      "practice": [
+        "Profile a large table",
+        "Compare memoization, virtualization, and data-shape changes"
+      ],
+      "mastery": [
+        "Provide a before-and-after trace",
+        "Explain the cost and limit of the chosen optimization"
+      ]
+    },
+    {
+      "id": "feature-ownership",
+      "title": "Independent feature ownership",
+      "summary": "Deliver, explain, observe, and review a feature across boundaries.",
+      "phase": "Integration",
+      "depends_on": [
+        "testing-strategy",
+        "performance-diagnosis"
+      ],
+      "practice": [
+        "Plan and deliver a small unfamiliar feature",
+        "Run a design and code review with another developer"
+      ],
+      "mastery": [
+        "Explain tradeoffs and operational risks",
+        "Respond to a changed requirement without losing the system model"
+      ]
+    }
+  ]
+}

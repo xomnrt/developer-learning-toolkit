@@ -1,0 +1,4 @@
+interface:
+  display_name: "Developer Learning Roadmap"
+  short_description: "Plan technology, level, or career transitions"
+  default_prompt: "Use $developer-learning-roadmap to build a detailed, evidence-based roadmap from my current capabilities to a technology, role, or responsibility target. Respond in my language."

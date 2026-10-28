@@ -1,0 +1,850 @@
+<!doctype html>
+<html lang="__LANG__">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'nonce-__CSP_NONCE__'; style-src 'nonce-__CSP_NONCE__'; img-src data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Developer learning roadmap</title>
+  <style nonce="__CSP_NONCE__">
+    :root {
+      color-scheme: light dark;
+      --bg: #f4f2ff;
+      --surface: rgba(255, 255, 255, 0.9);
+      --surface-strong: #ffffff;
+      --ink: #17152a;
+      --muted: #68637e;
+      --border: #dcd7f3;
+      --accent: #6d4aff;
+      --accent-2: #13a68d;
+      --ready: #e8fbf5;
+      --blocked: #eeecf5;
+      --done: #dff7ee;
+      --shadow: 0 18px 50px rgba(54, 37, 120, 0.12);
+      --radius: 20px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(109, 74, 255, 0.17), transparent 28rem),
+        radial-gradient(circle at 90% 2%, rgba(19, 166, 141, 0.14), transparent 24rem),
+        var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    button, input { font: inherit; }
+    button { color: inherit; }
+    a { color: var(--accent); }
+
+    .shell {
+      width: min(1440px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 56px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 380px);
+      gap: 28px;
+      align-items: end;
+      padding: clamp(24px, 4vw, 54px);
+      overflow: hidden;
+      background: linear-gradient(135deg, #1c1738, #342673 62%, #215f62);
+      color: #fff;
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      right: -80px;
+      top: -120px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 50%;
+      box-shadow: 0 0 0 48px rgba(255, 255, 255, 0.04), 0 0 0 96px rgba(255, 255, 255, 0.03);
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: #c9fff2;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 900px;
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 4.6rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+    }
+
+    .subtitle {
+      max-width: 760px;
+      margin: 20px 0 0;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: clamp(1rem, 1.7vw, 1.2rem);
+    }
+
+    .progress-card {
+      position: relative;
+      z-index: 1;
+      padding: 22px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 22px;
+      backdrop-filter: blur(16px);
+    }
+
+    .progress-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: baseline;
+    }
+
+    .progress-value { font-size: 2rem; font-weight: 850; }
+    .progress-copy { color: rgba(255, 255, 255, 0.72); }
+
+    .progress-track {
+      height: 10px;
+      margin-top: 16px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.16);
+      border-radius: 999px;
+    }
+
+    .progress-fill {
+      width: 0;
+      height: 100%;
+      background: linear-gradient(90deg, #8a70ff, #77f0ce);
+      border-radius: inherit;
+      transition: width 240ms ease;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin: 22px 0;
+      padding: 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 8px 24px rgba(54, 37, 120, 0.07);
+      backdrop-filter: blur(14px);
+    }
+
+    .toolbar-spacer { flex: 1; }
+
+    .control {
+      min-height: 42px;
+      padding: 9px 14px;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .control:hover { background: rgba(109, 74, 255, 0.08); }
+    .control[aria-pressed="true"], .control.primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .control.secondary { border-color: var(--border); background: var(--surface-strong); }
+    .control.danger { color: #a52b4c; }
+    .control:focus-visible, .node-main:focus-visible, .node-check:focus-visible, a:focus-visible {
+      outline: 3px solid rgba(109, 74, 255, 0.38);
+      outline-offset: 3px;
+    }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 340px;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .panel {
+      min-width: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .panel-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .panel-heading h2, .details h2 { margin: 0; font-size: 1.05rem; }
+    .legend { display: flex; flex-wrap: wrap; gap: 14px; color: var(--muted); font-size: 0.8rem; }
+    .legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .legend i { width: 9px; height: 9px; border-radius: 50%; background: var(--blocked); border: 1px solid var(--border); }
+    .legend .ready-dot { background: var(--accent); border-color: var(--accent); }
+    .legend .done-dot { background: var(--accent-2); border-color: var(--accent-2); }
+
+    .graph-scroll {
+      min-height: 620px;
+      overflow: auto;
+      overscroll-behavior: contain;
+      border-radius: 0 0 var(--radius) var(--radius);
+    }
+
+    .graph-canvas {
+      position: relative;
+      min-width: 720px;
+      min-height: 620px;
+      background-image: radial-gradient(circle, rgba(109, 74, 255, 0.12) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    .edge-layer { position: absolute; inset: 0; overflow: visible; pointer-events: none; }
+    .edge { fill: none; stroke: #c7c0e3; stroke-width: 2; }
+    .edge.done { stroke: rgba(19, 166, 141, 0.66); }
+
+    .graph-node {
+      position: absolute;
+      width: 230px;
+      height: 120px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 32px;
+      gap: 8px;
+      padding: 14px;
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 12px 30px rgba(42, 27, 104, 0.11);
+      transition: transform 160ms ease, border-color 160ms ease, opacity 160ms ease;
+    }
+
+    .graph-node:hover { transform: translateY(-3px); }
+    .graph-node[data-status="ready"] { border-color: rgba(109, 74, 255, 0.55); }
+    .graph-node[data-status="done"] { background: var(--done); border-color: rgba(19, 166, 141, 0.48); }
+    .graph-node[data-status="blocked"] { background: var(--blocked); }
+    .graph-node.filtered { opacity: 0.16; pointer-events: none; }
+
+    .node-main {
+      padding: 0;
+      text-align: left;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+    }
+
+    .node-phase {
+      display: block;
+      color: var(--muted);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .node-title {
+      display: -webkit-box;
+      margin-top: 6px;
+      overflow: hidden;
+      font-size: 0.97rem;
+      font-weight: 820;
+      line-height: 1.24;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+    .node-status { display: block; margin-top: 8px; color: var(--muted); font-size: 0.75rem; }
+
+    .node-check {
+      width: 24px;
+      height: 24px;
+      margin: 0;
+      accent-color: var(--accent-2);
+      cursor: pointer;
+    }
+
+    .details {
+      position: sticky;
+      top: 18px;
+      padding: 22px;
+    }
+
+    .details-empty { margin: 10px 0 0; color: var(--muted); }
+    .details-phase { margin: 0 0 7px; color: var(--accent); font-size: 0.75rem; font-weight: 850; letter-spacing: 0.09em; text-transform: uppercase; }
+    .details-summary { color: var(--muted); }
+    .details-section { margin-top: 20px; }
+    .details-section h3 { margin: 0 0 8px; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .details-section ul { margin: 0; padding-left: 20px; }
+    .details-section li + li { margin-top: 6px; }
+    .details-check { display: flex; gap: 10px; align-items: center; margin-top: 20px; font-weight: 750; }
+    .details-check input { width: 20px; height: 20px; accent-color: var(--accent-2); }
+
+    .list-view { display: none; padding: 18px; }
+    .list-view.active { display: grid; gap: 12px; }
+    .graph-scroll.hidden { display: none; }
+
+    .list-node {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: start;
+      padding: 16px;
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+    }
+
+    .list-node[data-status="done"] { background: var(--done); }
+    .list-node.filtered { display: none; }
+    .list-node input { width: 20px; height: 20px; margin-top: 3px; accent-color: var(--accent-2); }
+    .list-node h3 { margin: 0; font-size: 1rem; }
+    .list-node p { margin: 5px 0 0; color: var(--muted); font-size: 0.88rem; }
+    .list-node .node-main { width: 100%; }
+    .status-pill { padding: 4px 9px; border-radius: 999px; background: var(--blocked); color: var(--muted); font-size: 0.72rem; font-weight: 800; }
+    .status-pill.ready { background: rgba(109, 74, 255, 0.12); color: var(--accent); }
+    .status-pill.done { background: rgba(19, 166, 141, 0.14); color: #087763; }
+
+    .storage-note {
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: 0.78rem;
+      text-align: center;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 980px) {
+      .hero, .workspace { grid-template-columns: 1fr; }
+      .details { position: static; }
+    }
+
+    @media (max-width: 640px) {
+      .shell { width: min(100% - 16px, 1440px); padding-top: 8px; }
+      .hero { padding: 24px; border-radius: 22px; }
+      .toolbar { align-items: stretch; }
+      .toolbar-spacer { display: none; }
+      .control { flex: 1 1 auto; }
+      .panel-heading { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #100e19;
+        --surface: rgba(28, 25, 42, 0.92);
+        --surface-strong: #211e31;
+        --ink: #f3f0ff;
+        --muted: #aaa4c2;
+        --border: #3b3652;
+        --ready: #27233b;
+        --blocked: #242131;
+        --done: #163b35;
+        --shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+      }
+      .status-pill.done { color: #7af1d3; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+    }
+
+    @media print {
+      body { background: #fff; color: #000; }
+      .shell { width: 100%; padding: 0; }
+      .toolbar, .details, .storage-note { display: none; }
+      .hero { color: #fff; box-shadow: none; }
+      .workspace { display: block; }
+      .panel { box-shadow: none; }
+      .graph-scroll { overflow: visible; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow" data-i18n="eyebrow">Developer learning roadmap</p>
+        <h1 id="roadmap-title">Roadmap</h1>
+        <p class="subtitle" id="roadmap-subtitle"></p>
+      </div>
+      <section class="progress-card" aria-labelledby="progress-label">
+        <div class="progress-line">
+          <span class="progress-value" id="progress-percent">0%</span>
+          <span class="progress-copy" id="progress-label" data-i18n="completedLabel">completed</span>
+        </div>
+        <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-track">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <p class="progress-copy" id="progress-count">0 of 0 capabilities</p>
+      </section>
+    </header>
+
+    <nav class="toolbar" aria-label="Roadmap controls" id="roadmap-controls">
+      <button class="control primary" type="button" data-view="graph" data-i18n="graph" aria-pressed="true">Graph</button>
+      <button class="control" type="button" data-view="list" data-i18n="list" aria-pressed="false">List</button>
+      <span class="toolbar-spacer"></span>
+      <button class="control" type="button" data-filter="all" data-i18n="all" aria-pressed="true">All</button>
+      <button class="control" type="button" data-filter="ready" data-i18n="ready" aria-pressed="false">Ready</button>
+      <button class="control" type="button" data-filter="blocked" data-i18n="blocked" aria-pressed="false">Blocked</button>
+      <button class="control" type="button" data-filter="done" data-i18n="completed" aria-pressed="false">Completed</button>
+      <button class="control secondary" type="button" id="export-progress" data-i18n="export">Export</button>
+      <button class="control secondary" type="button" id="import-progress" data-i18n="import">Import</button>
+      <button class="control danger" type="button" id="reset-progress" data-i18n="reset">Reset</button>
+      <input class="sr-only" type="file" id="import-file" accept="application/json">
+    </nav>
+
+    <div class="workspace">
+      <section class="panel" aria-labelledby="map-heading">
+        <div class="panel-heading">
+          <h2 id="map-heading" data-i18n="dependencies">Knowledge dependencies</h2>
+          <div class="legend" aria-label="Status legend">
+            <span><i></i><b data-i18n="blocked">Blocked</b></span>
+            <span><i class="ready-dot"></i><b data-i18n="ready">Ready</b></span>
+            <span><i class="done-dot"></i><b data-i18n="completed">Completed</b></span>
+          </div>
+        </div>
+        <div class="graph-scroll" id="graph-scroll">
+          <div class="graph-canvas" id="graph-canvas">
+            <svg class="edge-layer" id="edge-layer" aria-hidden="true"></svg>
+          </div>
+        </div>
+        <div class="list-view" id="list-view"></div>
+      </section>
+
+      <aside class="panel details" id="details-panel" aria-live="polite">
+        <h2 data-i18n="details">Capability details</h2>
+        <p class="details-empty" data-i18n="chooseNode">Choose a node to see practice and mastery criteria.</p>
+      </aside>
+    </div>
+
+    <p class="storage-note" id="storage-note" data-i18n="storageNote">Progress is stored only in this browser.</p>
+    <p class="sr-only" aria-live="polite" id="live-region"></p>
+  </main>
+
+  <script type="application/json" id="roadmap-data" nonce="__CSP_NONCE__">__ROADMAP_DATA__</script>
+  <script nonce="__CSP_NONCE__">
+    (() => {
+      "use strict";
+
+      const data = JSON.parse(document.getElementById("roadmap-data").textContent);
+      const messages = {
+        en: {
+          eyebrow: "Developer learning roadmap", completedLabel: "completed", graph: "Graph", list: "List",
+          all: "All", ready: "Ready", blocked: "Blocked", completed: "Completed", export: "Export",
+          import: "Import", reset: "Reset", dependencies: "Knowledge dependencies", details: "Capability details",
+          chooseNode: "Choose a node to see practice and mastery criteria.", storageNote: "Progress is stored only in this browser.",
+          readyStatus: "Ready to learn", blockedStatus: "Waiting for prerequisites", level: "Level", noSummary: "No summary provided.",
+          prerequisites: "Prerequisites", practice: "Practice", mastery: "Mastery evidence", sources: "Sources",
+          canDemonstrate: "I can demonstrate this capability", capabilities: "capabilities", roadmapControls: "Roadmap controls",
+          markCompleted: "Mark completed", imported: "Progress imported.", wrongRoadmap: "This progress file belongs to another roadmap.",
+          importFailed: "Could not import progress.", resetConfirm: "Reset all progress for this roadmap?", notCompleted: "not completed",
+          fallbackSubtitle: "A dependency map for observable mastery.", titleSuffix: "Roadmap",
+          fileStorage: "Progress uses browser storage. For reliable persistence, open this page from a local HTTP server and keep export backups.",
+          unavailableStorage: "Browser storage is unavailable. Export progress before closing this page."
+        },
+        ru: {
+          eyebrow: "Roadmap обучения разработчика", completedLabel: "завершено", graph: "Граф", list: "Список",
+          all: "Все", ready: "Доступно", blocked: "Заблокировано", completed: "Завершено", export: "Экспорт",
+          import: "Импорт", reset: "Сбросить", dependencies: "Зависимости знаний", details: "Описание capability",
+          chooseNode: "Выберите узел, чтобы увидеть практику и критерии mastery.", storageNote: "Прогресс хранится только в этом браузере.",
+          readyStatus: "Можно изучать", blockedStatus: "Нужны prerequisite-узлы", level: "Уровень", noSummary: "Описание пока не добавлено.",
+          prerequisites: "Prerequisites", practice: "Практика", mastery: "Доказательства mastery", sources: "Источники",
+          canDemonstrate: "Я могу продемонстрировать эту capability", capabilities: "capabilities", roadmapControls: "Управление roadmap",
+          markCompleted: "Отметить как завершённое", imported: "Прогресс импортирован.", wrongRoadmap: "Файл прогресса относится к другому roadmap.",
+          importFailed: "Не удалось импортировать прогресс.", resetConfirm: "Сбросить весь прогресс этого roadmap?", notCompleted: "не завершено",
+          fallbackSubtitle: "Граф зависимостей для проверяемого mastery.", titleSuffix: "Roadmap",
+          fileStorage: "Прогресс использует хранилище браузера. Для надёжного сохранения откройте страницу через локальный HTTP-сервер и храните экспортную копию.",
+          unavailableStorage: "Хранилище браузера недоступно. Экспортируйте прогресс перед закрытием страницы."
+        }
+      };
+      const copy = messages[data.language] || messages.en;
+      const t = (key) => copy[key] || messages.en[key] || key;
+      const nodesById = new Map(data.nodes.map((node) => [node.id, node]));
+      const graphCanvas = document.getElementById("graph-canvas");
+      const edgeLayer = document.getElementById("edge-layer");
+      const listView = document.getElementById("list-view");
+      const detailsPanel = document.getElementById("details-panel");
+      const liveRegion = document.getElementById("live-region");
+      let activeFilter = "all";
+      let selectedId = null;
+      let storageAvailable = true;
+
+      const loadCompleted = () => {
+        try {
+          const parsed = JSON.parse(localStorage.getItem(data.storage_key) || "{}");
+          return new Set(Array.isArray(parsed.completed) ? parsed.completed.filter((id) => nodesById.has(id)) : []);
+        } catch (error) {
+          storageAvailable = false;
+          return new Set();
+        }
+      };
+
+      const completed = loadCompleted();
+
+      const save = () => {
+        try {
+          localStorage.setItem(data.storage_key, JSON.stringify({
+            schema_version: 1,
+            roadmap_id: data.id,
+            completed: [...completed].sort(),
+            updated_at: new Date().toISOString()
+          }));
+        } catch (error) {
+          storageAvailable = false;
+          document.getElementById("storage-note").textContent = t("unavailableStorage");
+        }
+      };
+
+      const statusFor = (node) => {
+        if (completed.has(node.id)) return "done";
+        return node.depends_on.every((id) => completed.has(id)) ? "ready" : "blocked";
+      };
+
+      const statusLabel = (status) => ({done: t("completed"), ready: t("readyStatus"), blocked: t("blockedStatus")}[status]);
+
+      const calculateLayers = () => {
+        const levels = new Map();
+        const visit = (id) => {
+          if (levels.has(id)) return levels.get(id);
+          const node = nodesById.get(id);
+          const level = node.depends_on.length ? Math.max(...node.depends_on.map(visit)) + 1 : 0;
+          levels.set(id, level);
+          return level;
+        };
+        data.nodes.forEach((node) => visit(node.id));
+        return levels;
+      };
+
+      const positions = new Map();
+      const buildGraph = () => {
+        const levels = calculateLayers();
+        const groups = new Map();
+        data.nodes.forEach((node) => {
+          const level = levels.get(node.id);
+          if (!groups.has(level)) groups.set(level, []);
+          groups.get(level).push(node);
+        });
+
+        const nodeWidth = 230;
+        const nodeHeight = 120;
+        const gapX = 42;
+        const gapY = 100;
+        const padding = 54;
+        const widest = Math.max(...[...groups.values()].map((items) => items.length));
+        const width = Math.max(720, padding * 2 + widest * nodeWidth + (widest - 1) * gapX);
+        const height = Math.max(620, padding * 2 + groups.size * nodeHeight + (groups.size - 1) * gapY);
+        graphCanvas.style.width = `${width}px`;
+        graphCanvas.style.height = `${height}px`;
+        edgeLayer.setAttribute("viewBox", `0 0 ${width} ${height}`);
+        edgeLayer.setAttribute("width", width);
+        edgeLayer.setAttribute("height", height);
+
+        [...groups.entries()].sort(([a], [b]) => a - b).forEach(([level, items]) => {
+          const rowWidth = items.length * nodeWidth + (items.length - 1) * gapX;
+          const startX = (width - rowWidth) / 2;
+          items.forEach((node, index) => {
+            const x = startX + index * (nodeWidth + gapX);
+            const y = padding + level * (nodeHeight + gapY);
+            positions.set(node.id, {x, y});
+
+            const wrapper = document.createElement("div");
+            wrapper.className = "graph-node";
+            wrapper.dataset.nodeId = node.id;
+            wrapper.style.left = `${x}px`;
+            wrapper.style.top = `${y}px`;
+
+            const main = document.createElement("button");
+            main.type = "button";
+            main.className = "node-main";
+            main.addEventListener("click", () => showDetails(node.id));
+
+            const phase = document.createElement("span");
+            phase.className = "node-phase";
+            phase.textContent = node.phase || `${t("level")} ${level + 1}`;
+            const title = document.createElement("span");
+            title.className = "node-title";
+            title.textContent = node.title;
+            const status = document.createElement("span");
+            status.className = "node-status";
+            main.append(phase, title, status);
+
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.className = "node-check";
+            checkbox.setAttribute("aria-label", `${t("markCompleted")}: ${node.title}`);
+            checkbox.addEventListener("change", () => setCompleted(node.id, checkbox.checked));
+            wrapper.append(main, checkbox);
+            graphCanvas.append(wrapper);
+          });
+        });
+
+        drawEdges();
+      };
+
+      const drawEdges = () => {
+        edgeLayer.replaceChildren();
+        data.nodes.forEach((node) => {
+          const target = positions.get(node.id);
+          node.depends_on.forEach((dependencyId) => {
+            const source = positions.get(dependencyId);
+            const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            const x1 = source.x + 115;
+            const y1 = source.y + 120;
+            const x2 = target.x + 115;
+            const y2 = target.y;
+            const midY = (y1 + y2) / 2;
+            path.setAttribute("d", `M ${x1} ${y1} C ${x1} ${midY}, ${x2} ${midY}, ${x2} ${y2}`);
+            path.classList.add("edge");
+            path.dataset.source = dependencyId;
+            path.dataset.target = node.id;
+            edgeLayer.append(path);
+          });
+        });
+      };
+
+      const buildList = () => {
+        data.nodes.forEach((node) => {
+          const item = document.createElement("article");
+          item.className = "list-node";
+          item.dataset.nodeId = node.id;
+
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.setAttribute("aria-label", `${t("markCompleted")}: ${node.title}`);
+          checkbox.addEventListener("change", () => setCompleted(node.id, checkbox.checked));
+
+          const content = document.createElement("button");
+          content.type = "button";
+          content.className = "node-main";
+          const title = document.createElement("h3");
+          title.textContent = node.title;
+          const summary = document.createElement("p");
+          summary.textContent = node.summary || t("noSummary");
+          content.append(title, summary);
+          content.addEventListener("click", () => showDetails(node.id));
+
+          const status = document.createElement("span");
+          status.className = "status-pill";
+          item.append(checkbox, content, status);
+          listView.append(item);
+        });
+      };
+
+      const addList = (parent, heading, items) => {
+        if (!items.length) return;
+        const section = document.createElement("section");
+        section.className = "details-section";
+        const title = document.createElement("h3");
+        title.textContent = heading;
+        const list = document.createElement("ul");
+        items.forEach((item) => {
+          const entry = document.createElement("li");
+          entry.textContent = item;
+          list.append(entry);
+        });
+        section.append(title, list);
+        parent.append(section);
+      };
+
+      const showDetails = (id) => {
+        selectedId = id;
+        const node = nodesById.get(id);
+        detailsPanel.replaceChildren();
+        const phase = document.createElement("p");
+        phase.className = "details-phase";
+        phase.textContent = node.phase || statusLabel(statusFor(node));
+        const title = document.createElement("h2");
+        title.textContent = node.title;
+        const summary = document.createElement("p");
+        summary.className = "details-summary";
+        summary.textContent = node.summary || t("noSummary");
+        detailsPanel.append(phase, title, summary);
+
+        addList(detailsPanel, t("prerequisites"), node.depends_on.map((dependency) => nodesById.get(dependency).title));
+        addList(detailsPanel, t("practice"), node.practice);
+        addList(detailsPanel, t("mastery"), node.mastery);
+
+        if (node.resources.length) {
+          const section = document.createElement("section");
+          section.className = "details-section";
+          const heading = document.createElement("h3");
+          heading.textContent = t("sources");
+          const list = document.createElement("ul");
+          node.resources.forEach((resource) => {
+            const item = document.createElement("li");
+            const link = document.createElement("a");
+            link.href = resource.url;
+            link.textContent = resource.label;
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+            item.append(link);
+            list.append(item);
+          });
+          section.append(heading, list);
+          detailsPanel.append(section);
+        }
+
+        const label = document.createElement("label");
+        label.className = "details-check";
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = completed.has(id);
+        checkbox.addEventListener("change", () => setCompleted(id, checkbox.checked));
+        const copy = document.createElement("span");
+        copy.textContent = t("canDemonstrate");
+        label.append(checkbox, copy);
+        detailsPanel.append(label);
+      };
+
+      const setCompleted = (id, isComplete) => {
+        if (isComplete) completed.add(id); else completed.delete(id);
+        save();
+        refresh();
+        if (selectedId === id) showDetails(id);
+        liveRegion.textContent = `${nodesById.get(id).title}: ${isComplete ? t("completed") : t("notCompleted")}.`;
+      };
+
+      const refresh = () => {
+        document.querySelectorAll("[data-node-id]").forEach((element) => {
+          const node = nodesById.get(element.dataset.nodeId);
+          const status = statusFor(node);
+          element.dataset.status = status;
+          element.classList.toggle("filtered", activeFilter !== "all" && activeFilter !== status);
+          const checkbox = element.querySelector("input[type='checkbox']");
+          if (checkbox) checkbox.checked = completed.has(node.id);
+          const statusCopy = element.querySelector(".node-status");
+          if (statusCopy) statusCopy.textContent = statusLabel(status);
+          const pill = element.querySelector(".status-pill");
+          if (pill) {
+            pill.className = `status-pill ${status}`;
+            pill.textContent = statusLabel(status);
+          }
+        });
+
+        document.querySelectorAll(".edge").forEach((edge) => {
+          edge.classList.toggle("done", completed.has(edge.dataset.source) && completed.has(edge.dataset.target));
+        });
+
+        const percent = Math.round((completed.size / data.nodes.length) * 100);
+        document.getElementById("progress-percent").textContent = `${percent}%`;
+        document.getElementById("progress-count").textContent = `${completed.size} / ${data.nodes.length} ${t("capabilities")}`;
+        document.getElementById("progress-fill").style.width = `${percent}%`;
+        document.getElementById("progress-track").setAttribute("aria-valuenow", percent);
+      };
+
+      const exportProgress = () => {
+        const payload = JSON.stringify({
+          schema_version: 1,
+          roadmap_id: data.id,
+          completed: [...completed].sort(),
+          completed_nodes: [...completed].sort().map((id) => ({id, title: nodesById.get(id).title})),
+          exported_at: new Date().toISOString()
+        }, null, 2);
+        const url = URL.createObjectURL(new Blob([payload], {type: "application/json"}));
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = `${data.id}-progress.json`;
+        link.click();
+        URL.revokeObjectURL(url);
+      };
+
+      const importProgress = async (file) => {
+        try {
+          const imported = JSON.parse(await file.text());
+          if (imported.roadmap_id !== data.id || !Array.isArray(imported.completed)) {
+            throw new Error(t("wrongRoadmap"));
+          }
+          completed.clear();
+          imported.completed.filter((id) => nodesById.has(id)).forEach((id) => completed.add(id));
+          save();
+          refresh();
+          if (selectedId) showDetails(selectedId);
+          liveRegion.textContent = t("imported");
+        } catch (error) {
+          window.alert(error instanceof Error ? error.message : t("importFailed"));
+        }
+      };
+
+      document.getElementById("roadmap-title").textContent = data.title;
+      document.title = `${data.title} · ${t("titleSuffix")}`;
+      const subtitle = document.getElementById("roadmap-subtitle");
+      subtitle.textContent = data.subtitle || data.description || t("fallbackSubtitle");
+      document.getElementById("roadmap-controls").setAttribute("aria-label", t("roadmapControls"));
+      document.querySelectorAll("[data-i18n]").forEach((element) => {
+        element.textContent = t(element.dataset.i18n);
+      });
+
+      document.querySelectorAll("[data-filter]").forEach((button) => {
+        button.addEventListener("click", () => {
+          activeFilter = button.dataset.filter;
+          document.querySelectorAll("[data-filter]").forEach((item) => item.setAttribute("aria-pressed", item === button ? "true" : "false"));
+          refresh();
+        });
+      });
+
+      document.querySelectorAll("[data-view]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const graphMode = button.dataset.view === "graph";
+          document.getElementById("graph-scroll").classList.toggle("hidden", !graphMode);
+          listView.classList.toggle("active", !graphMode);
+          document.querySelectorAll("[data-view]").forEach((item) => {
+            item.setAttribute("aria-pressed", item === button ? "true" : "false");
+            item.classList.toggle("primary", item === button);
+          });
+        });
+      });
+
+      document.getElementById("export-progress").addEventListener("click", exportProgress);
+      document.getElementById("import-progress").addEventListener("click", () => document.getElementById("import-file").click());
+      document.getElementById("import-file").addEventListener("change", (event) => {
+        const [file] = event.target.files;
+        if (file) importProgress(file);
+        event.target.value = "";
+      });
+      document.getElementById("reset-progress").addEventListener("click", () => {
+        if (!window.confirm(t("resetConfirm"))) return;
+        completed.clear();
+        save();
+        refresh();
+        if (selectedId) showDetails(selectedId);
+      });
+
+      buildGraph();
+      buildList();
+      refresh();
+      showDetails(data.nodes[0].id);
+
+      if (!storageAvailable || location.protocol === "file:") {
+        document.getElementById("storage-note").textContent = location.protocol === "file:"
+          ? t("fileStorage")
+          : t("unavailableStorage");
+      }
+    })();
+  </script>
+</body>
+</html>

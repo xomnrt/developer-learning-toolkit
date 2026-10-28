@@ -1,0 +1,4 @@
+interface:
+  display_name: "Developer Learning Coach"
+  short_description: "Diagnose and design a developer learning system"
+  default_prompt: "Use $developer-learning-coach to diagnose how I learn technical topics before recommending a study system. Respond in my language."

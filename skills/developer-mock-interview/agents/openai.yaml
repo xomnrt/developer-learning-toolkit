@@ -1,0 +1,4 @@
+interface:
+  display_name: "Developer Mock Interview"
+  short_description: "Practice adaptive technical interview cases"
+  default_prompt: "Use $developer-mock-interview to run one adaptive technical interview case at a time, evaluate my answer, and test material completed in my roadmap. Respond in my language."

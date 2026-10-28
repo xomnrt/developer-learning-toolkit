@@ -1,0 +1,19 @@
+{
+  "name": "developer-learning-toolkit",
+  "displayName": "Developer Learning Toolkit",
+  "version": "0.3.0",
+  "description": "Learning diagnostics, interactive career roadmaps, mastery planning, and mock interviews for software developers.",
+  "author": {
+    "name": "xomnrt"
+  },
+  "repository": "https://github.com/xomnrt/developer-learning-toolkit",
+  "license": "MIT",
+  "keywords": [
+    "developer-learning",
+    "learning-coach",
+    "mastery",
+    "study-planning",
+    "career-roadmap",
+    "mock-interview"
+  ]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Developer Work Context"
+  short_description: "Map work technologies and learning targets"
+  default_prompt: "Use $developer-work-context to map the technologies I use now, have used before, and plan to learn for work. Respond in my language."

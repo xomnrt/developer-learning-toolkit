@@ -1,0 +1,38 @@
+{
+  "name": "developer-learning-toolkit",
+  "version": "0.3.0",
+  "description": "Learning diagnostics, interactive career roadmaps, mastery planning, and mock interviews for software developers.",
+  "author": {
+    "name": "xomnrt"
+  },
+  "license": "MIT",
+  "keywords": [
+    "developer-learning",
+    "learning-coach",
+    "mastery",
+    "study-planning",
+    "career-roadmap",
+    "mock-interview"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Developer Learning Toolkit",
+    "shortDescription": "Build, track, and test a technical roadmap",
+    "longDescription": "Map your development context, diagnose where learning stalls, build an interactive roadmap for a technology or career transition, and practice completed capabilities in adaptive mock interviews. The toolkit uses observable mastery evidence and does not provide psychological diagnoses.",
+    "developerName": "xomnrt",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive assessment",
+      "Learning plan",
+      "Technology and career roadmap",
+      "Interactive dependency graph",
+      "Adaptive mock interview"
+    ],
+    "defaultPrompt": [
+      "Map my work context, then help me understand how I learn.",
+      "Проведи диагностику моей системы обучения на русском языке.",
+      "Build a detailed roadmap from my current skills to a new technology, role, or responsibility level.",
+      "Run a mock interview using the capabilities I completed in my roadmap."
+    ]
+  }
+}

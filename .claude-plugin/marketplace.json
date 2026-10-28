@@ -1,0 +1,22 @@
+{
+  "name": "developer-learning-toolkit-marketplace",
+  "description": "Learning diagnostics, interactive technical roadmaps, and adaptive mock interviews for software developers.",
+  "owner": {
+    "name": "xomnrt"
+  },
+  "plugins": [
+    {
+      "name": "developer-learning-toolkit",
+      "source": "./",
+      "description": "Map development work, build an interactive roadmap, track progress, and practice completed capabilities in adaptive mock interviews.",
+      "category": "Productivity",
+      "tags": [
+        "developer-learning",
+        "learning-coach",
+        "mastery",
+        "career-roadmap",
+        "mock-interview"
+      ]
+    }
+  ]
+}
