@@ -1,0 +1,299 @@
+{
+  "id": "frontend-roadmap-test-ru",
+  "language": "ru",
+  "title": "Тестовый граф развития frontend-разработчика",
+  "subtitle": "От устройства веба к самостоятельной разработке фич",
+  "description": "Демонстрационный граф для проверки зависимостей, статусов, localStorage и экспорта прогресса. Это не персональный учебный план.",
+  "nodes": [
+    {
+      "id": "web-and-http",
+      "title": "Веб и HTTP",
+      "summary": "Понимать путь запроса: браузер, DNS, HTTP, сервер и ответ.",
+      "phase": "Фундамент веба",
+      "depends_on": [],
+      "practice": [
+        "Открыть DevTools и выбрать запрос загрузки страницы во вкладке Network",
+        "Проверить URL, метод, статус, request/response headers и время ответа",
+        "Восстановить путь от ввода URL до получения ответа браузером",
+        "Сформулировать гипотезу об ошибке и проверить её по данным Network"
+      ],
+      "mastery": [
+        "Умею объяснить назначение HTTP-метода, заголовков и кода ответа",
+        "Могу по данным Network найти место, где возникла ошибка",
+        "Могу отличить проблему DNS, соединения, сервера и клиентского кода"
+      ],
+      "resources": [
+        {
+          "label": "MDN: HTTP overview",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview"
+        }
+      ]
+    },
+    {
+      "id": "browser-rendering",
+      "title": "Браузер и рендеринг",
+      "summary": "Связать загрузку HTML, CSS и JavaScript с построением и обновлением страницы.",
+      "phase": "Фундамент веба",
+      "depends_on": [
+        "web-and-http"
+      ],
+      "practice": [
+        "Сравнить порядок загрузки нескольких ресурсов",
+        "Создать тестовую страницу с 1000 карточками и кнопкой `Изменить ширину`: обработчик кнопки должен по очереди менять `style.width` у каждой карточки",
+        "Открыть DevTools → Performance, записать профиль во время одного клика и найти на временной шкале событие Layout или Paint",
+        "Записать, сколько раз событие повторилось и какой обработчик его вызвал; затем изменить обработчик так, чтобы сначала вычислить значения, а потом применить их одним проходом",
+        "Повторить запись и сравнить число событий до и после; считать задачу выполненной, если причина названа по профилю, а улучшение подтверждено второй записью"
+      ],
+      "mastery": [
+        "Объяснить критический путь рендеринга на конкретной странице",
+        "Сформулировать проверяемую гипотезу о проблеме производительности"
+      ],
+      "resources": [
+        {
+          "label": "MDN: critical rendering path",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/Critical_rendering_path"
+        }
+      ]
+    },
+    {
+      "id": "html-accessibility",
+      "title": "Семантический HTML и доступность",
+      "summary": "Строить структуру страницы и формы, которыми можно пользоваться с клавиатуры и скринридером.",
+      "phase": "Интерфейс",
+      "depends_on": [
+        "browser-rendering"
+      ],
+      "practice": [
+        "Сверстать форму с корректными label и состояниями ошибки",
+        "Проверить навигацию клавиатурой и accessibility tree"
+      ],
+      "mastery": [
+        "Объяснить выбор семантического элемента",
+        "Исправить нарушение фокуса без добавления лишних ARIA-атрибутов"
+      ],
+      "resources": [
+        {
+          "label": "MDN: accessibility",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn/Accessibility"
+        }
+      ]
+    },
+    {
+      "id": "css-layout",
+      "title": "CSS и адаптивная вёрстка",
+      "summary": "Выбирать layout, каскад и точки перелома под поведение интерфейса.",
+      "phase": "Интерфейс",
+      "depends_on": [
+        "html-accessibility"
+      ],
+      "practice": [
+        "Собрать responsive-карточки на Flexbox и Grid",
+        "Диагностировать конфликт специфичности и каскада"
+      ],
+      "mastery": [
+        "Объяснить, почему конкретный элемент занял своё место",
+        "Адаптировать layout под новый размер без копирования блоков"
+      ],
+      "resources": [
+        {
+          "label": "MDN: CSS layout",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout"
+        }
+      ]
+    },
+    {
+      "id": "javascript-execution",
+      "title": "JavaScript: выполнение и данные",
+      "summary": "Понимать области видимости, замыкания, типы данных и порядок выполнения кода.",
+      "phase": "Язык",
+      "depends_on": [
+        "browser-rendering"
+      ],
+      "practice": [
+        "Предсказать результат примеров с замыканиями и this",
+        "Написать debounce и объяснить его состояние"
+      ],
+      "mastery": [
+        "Предсказать порядок выполнения до запуска кода",
+        "Найти ошибку в преобразовании данных и объяснить её причину"
+      ],
+      "resources": [
+        {
+          "label": "MDN: JavaScript guide",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide"
+        }
+      ]
+    },
+    {
+      "id": "dom-and-async",
+      "title": "DOM и асинхронность",
+      "summary": "Связывать события, DOM, Fetch, Promise и обработку ошибок в браузерной программе.",
+      "phase": "Язык",
+      "depends_on": [
+        "javascript-execution",
+        "html-accessibility"
+      ],
+      "practice": [
+        "Сделать Todo-приложение без фреймворка с сохранением данных",
+        "Воспроизвести и исправить гонку ответов поиска"
+      ],
+      "mastery": [
+        "Объяснить жизненный цикл асинхронного запроса",
+        "Обработать loading, error и empty-состояния без скрытых ошибок"
+      ],
+      "resources": [
+        {
+          "label": "MDN: Fetch API",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API"
+        }
+      ]
+    },
+    {
+      "id": "typescript-modeling",
+      "title": "TypeScript и границы данных",
+      "summary": "Описывать состояния и API так, чтобы типы помогали увидеть неопределённость.",
+      "phase": "Язык",
+      "depends_on": [
+        "javascript-execution",
+        "dom-and-async"
+      ],
+      "practice": [
+        "Типизировать ответ API и ошибки запроса",
+        "Заменить небезопасный any на unknown и сужение типа"
+      ],
+      "mastery": [
+        "Выбрать между union, generic и interface для конкретной границы",
+        "Объяснить, какие проверки нужны в runtime, несмотря на типы"
+      ],
+      "resources": [
+        {
+          "label": "TypeScript Handbook",
+          "url": "https://www.typescriptlang.org/docs/handbook/intro.html"
+        }
+      ]
+    },
+    {
+      "id": "react-rendering",
+      "title": "React: рендеринг и компоненты",
+      "summary": "Предсказывать, когда и почему компонент перерисовывается, и проверять гипотезу инструментами.",
+      "phase": "React",
+      "depends_on": [
+        "javascript-execution",
+        "html-accessibility"
+      ],
+      "practice": [
+        "Разобрать поток props и state в небольшом дереве",
+        "Проверить лишний rerender через React DevTools Profiler"
+      ],
+      "mastery": [
+        "Найти причину лишнего rerender",
+        "Объяснить, когда memoизация не решает проблему"
+      ],
+      "resources": [
+        {
+          "label": "React: render and commit",
+          "url": "https://react.dev/learn/render-and-commit"
+        }
+      ]
+    },
+    {
+      "id": "react-state-architecture",
+      "title": "React: состояние и архитектура",
+      "summary": "Разделять локальное, общее, серверное и производное состояние между слоями приложения.",
+      "phase": "React",
+      "depends_on": [
+        "react-rendering",
+        "typescript-modeling",
+        "dom-and-async"
+      ],
+      "practice": [
+        "Спроектировать состояние dashboard-фичи",
+        "Разобрать stale closure и cleanup в useEffect"
+      ],
+      "mastery": [
+        "Для dashboard с фильтром, выбранной строкой и данными API нарисовать стрелки «источник → владелец → потребители» и по ним объяснить, где происходит каждое обновление",
+        "После требования «фильтр должен сохраняться в URL» изменить схему состояния и показать diff только затронутых компонентов, не переписывая загрузку данных"
+      ],
+      "resources": [
+        {
+          "label": "React: managing state",
+          "url": "https://react.dev/learn/managing-state"
+        }
+      ]
+    },
+    {
+      "id": "testing-and-debugging",
+      "title": "Тестирование и отладка",
+      "summary": "Выбирать проверки по рискам и восстанавливать причинную цепочку при ошибке.",
+      "phase": "Надёжность",
+      "depends_on": [
+        "react-state-architecture",
+        "dom-and-async"
+      ],
+      "practice": [
+        "Проверить optimistic update и откат при ошибке",
+        "Исправить намеренно сломанный тест по его наблюдаемому поведению"
+      ],
+      "mastery": [
+        "Объяснить, какой риск ловит каждый тест",
+        "Локализовать дефект до изменения кода"
+      ],
+      "resources": [
+        {
+          "label": "Testing Library: guiding principles",
+          "url": "https://testing-library.com/docs/guiding-principles"
+        }
+      ]
+    },
+    {
+      "id": "performance-diagnosis",
+      "title": "Диагностика производительности",
+      "summary": "Измерять проблему до выбора оптимизации рендера, загрузки или структуры данных.",
+      "phase": "Надёжность",
+      "depends_on": [
+        "react-rendering",
+        "react-state-architecture",
+        "browser-rendering"
+      ],
+      "practice": [
+        "Профилировать таблицу с большим количеством строк",
+        "Сравнить memoизацию, виртуализацию и изменение формы данных"
+      ],
+      "mastery": [
+        "Показать измерение до и после изменения",
+        "Объяснить стоимость и границы выбранной оптимизации"
+      ],
+      "resources": [
+        {
+          "label": "web.dev: performance",
+          "url": "https://web.dev/learn/performance"
+        }
+      ]
+    },
+    {
+      "id": "independent-feature",
+      "title": "Самостоятельная фича",
+      "summary": "Доставить небольшую незнакомую фичу: от уточнения задачи до проверки, ревью и объяснения решений.",
+      "phase": "Интеграция",
+      "depends_on": [
+        "testing-and-debugging",
+        "performance-diagnosis",
+        "css-layout"
+      ],
+      "practice": [
+        "Спланировать и реализовать фичу с loading, error и empty-состояниями",
+        "Провести короткое code review и зафиксировать компромиссы"
+      ],
+      "mastery": [
+        "Объяснить архитектурные и эксплуатационные риски",
+        "Адаптировать решение после изменения требования"
+      ],
+      "resources": [
+        {
+          "label": "React: thinking in React",
+          "url": "https://react.dev/learn/thinking-in-react"
+        }
+      ]
+    }
+  ]
+}

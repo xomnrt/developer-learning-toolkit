@@ -75,6 +75,13 @@ material. Prefer linking and deriving a capability map over reproducing content.
 | [dypsilon/frontend-dev-bookmarks](https://github.com/dypsilon/frontend-dev-bookmarks) | Discover frontend references by topic | CC BY 4.0; verify each linked resource separately. |
 | [WeMakeDevs/roadmaps](https://github.com/WeMakeDevs/roadmaps) | Communities, mentorship, and job-portal discovery | MIT. Its current focus is broader than curriculum design. |
 
+## Design and visual references
+
+| Source | Candidate use | Verification rule |
+| --- | --- | --- |
+| [UPROCK](https://uprock.webflow.io/) | Russian UX/UI design articles, learning materials, typography and visual-reference collections | Use for visual exploration, interface examples and design vocabulary. Do not treat promotional course claims as evidence of technical mastery. |
+| [UXROCK](https://www.uxrock.ru/) | Product-design articles, videos and critique prompts | Use as an optional source for visual analysis; verify product, accessibility and platform claims against primary sources. |
+
 ## Selection record
 
 When a roadmap uses one of these sources, record:

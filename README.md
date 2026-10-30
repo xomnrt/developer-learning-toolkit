@@ -39,7 +39,7 @@ Developer Work Context Card
                  ↓
             Rolling 1–2 week cycles with mastery checkpoints
                  ↓
-            Interactive dependency graph and progress export
+            Interactive dependency graph and local progress
                  ↓
             Adaptive mock interviews on completed capabilities
 ```
@@ -53,6 +53,31 @@ The repository is packaged as a plugin for Codex and Claude Code.
 Both hosts use the same `skills/` directories. The plugin has no MCP server,
 hooks, external accounts, analytics, or third-party runtime dependencies. Its
 offline HTML renderer uses the Python standard library.
+
+### Quick start
+
+If this is your first time using the toolkit:
+
+1. Install the plugin for Codex or Claude Code using one of the methods below.
+2. Start a new conversation.
+3. Paste this request:
+
+   ```text
+   Use developer-learning-toolkit. Help me build a TypeScript learning roadmap.
+   Ask about my goal, current experience, and available time first. Respond in
+   English and give concrete tasks with observable checks.
+   ```
+
+To request the visual artifact as well:
+
+```text
+Generate the roadmap JSON and an interactive HTML dependency graph with browser
+progress storage.
+```
+
+The conversation and the HTML graph serve different purposes: the conversation
+builds and explains the plan, while the graph shows dependencies, opens tasks,
+and lets you mark topics as completed.
 
 ### Codex
 
@@ -138,6 +163,10 @@ description.
 The commands above use macOS/Linux paths. On another operating system, use the
 equivalent user and project directories.
 
+If a skill does not activate automatically, invoke it explicitly using the name
+from the table above. After installing a plugin, starting a new conversation
+usually makes discovery predictable.
+
 ## Recommended usage
 
 The examples below use Codex invocation names. In Claude Code, substitute the
@@ -206,6 +235,21 @@ should be marked as tentative rather than presented as facts.
 
 ### Step 4: build a detailed roadmap
 
+Roadmaps can start from four kinds of input:
+
+| Mode | Use it when | Map backbone |
+| --- | --- | --- |
+| Goal-driven | You need a role transition or a work outcome | Target responsibilities and a gap map |
+| Technology-driven | You want to learn a language, framework, or tool | Concept dependencies and practice tasks |
+| Source-driven | You have a book, course, documentation set, or syllabus | The source outline with chapter traceability |
+| Hybrid | You need to connect a source to real work | The source plus work-context requirements |
+
+For source-driven roadmaps you can provide a book title and edition, an official
+table-of-contents URL, a course syllabus, a documentation sidebar, or your own
+topic outline. When the source is incomplete, the skill marks the gap instead of
+inventing chapters. Nodes added for practice or work requirements remain distinct
+from nodes derived from the source.
+
 Use the context card and, when available, the diagnosed learning system:
 
 ```text
@@ -231,8 +275,39 @@ current technical facts against primary sources, and keeps excluded topics in a
 later backlog. A role title is never treated as a universal standard across
 companies.
 
+The roadmap can also be source-driven: use a book, course syllabus, or
+documentation outline as the backbone:
+
+```text
+Use $developer-learning-roadmap. I want to study You Don't Know JS Yet.
+Use the table of contents for my edition as the source outline, turn chapters
+into small capabilities with dependencies, practice tasks, and observable
+mastery checks. Mark which nodes come from the book and which are additions for
+real frontend work. Produce the roadmap JSON and interactive HTML graph.
+```
+
+If editions differ, provide the table of contents or the exact edition URL. The
+outline is a coverage map, not a checkbox list: chapters are split into
+observable skills, dependencies are checked, and reading is supplemented with
+practice, debugging, and transfer tasks.
+
+Each node can include the topic and problem it solves, prerequisites and the
+original chapter or section, an ordered verification task, observable “I can…”
+mastery criteria, primary source links, and the next available step in the graph.
+
 The diagnostic is optional for roadmap creation. Use it when motivation,
 starting, task difficulty, or review habits are likely to affect execution.
+
+If you have completed the diagnostic, pass its profile with the roadmap request:
+
+```text
+Use my profile: conceptual, example-first, guided with gradually fading
+scaffolding. For every node, start with the problem and causal model, then give
+a prediction, a small experiment, an implementation task, and a transfer task.
+```
+
+The profile changes the explanation order and hint level; it is not a personality
+type or a sensory learning-style label.
 
 ### Step 5: generate the interactive roadmap
 
@@ -245,8 +320,11 @@ in local browser storage.
 ```
 
 The standalone page includes graph and list views, blocked/ready/completed
-states, progress filters, details for practice and mastery, and JSON
-export/import. It has no CDN, analytics, or network requests.
+states, progress filters, details for practice and mastery, and local reset.
+Progress is stored in the browser and scoped to the roadmap ID. The page has no
+CDN, analytics, or network requests. The graph fits the available workspace
+width by default without horizontal scrolling; zoom controls let you enlarge it
+or return to the fitted scale.
 
 For reliable browser persistence, serve the output directory locally:
 
@@ -257,12 +335,25 @@ python3 -m http.server 8000 --directory /path/to/output
 Then open `http://localhost:8000/roadmap.html`. Opening the file directly also
 works, but browser behavior for `localStorage` on `file:` URLs varies.
 
+### Troubleshooting
+
+- **Not sure where to start** — use `developer-work-context`, then
+  `developer-learning-coach`, then `developer-learning-roadmap`.
+- **The plan is too generic** — provide concrete code, a project, a book or
+  table of contents, a deadline, and available hours per week.
+- **The graph does not open** — verify the JSON path and run the renderer from
+  `skills/developer-learning-roadmap/scripts`.
+- **Progress is not saved** — serve the HTML with `python3 -m http.server`
+  instead of opening a `file:` URL directly.
+- **Need another language** — state it explicitly, for example “Respond in
+  Russian” or “Conduct the roadmap in English”.
+
 ### Step 6: practice completed material in a mock interview
 
-Use the current roadmap or its exported progress file:
+Use the current roadmap and the completed nodes visible in the current session:
 
 ```text
-Use $developer-mock-interview with my roadmap progress export. Run a realistic
+Use $developer-mock-interview with the completed nodes from my current roadmap. Run a realistic
 mock interview for a middle system analyst. Ask one practical case at a time,
 wait for my answer, give strict constructive feedback, and gradually increase
 the ambiguity.

@@ -1,0 +1,1134 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'nonce-ZVZvuaNWcdJPZYjle5_ThL35'; style-src 'nonce-ZVZvuaNWcdJPZYjle5_ThL35'; img-src data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%20role%3D%22img%22%20aria-label%3D%22Learning%20roadmap%22%3E%0A%20%20%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%228%22%20fill%3D%22%2318181B%22%2F%3E%0A%20%20%3Cpath%20d%3D%22M8%209.5%2016%2016l8-6.5M8%2022.5%2016%2016l8%206.5%22%20fill%3D%22none%22%20stroke%3D%22%23A1A1AA%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%0A%20%20%3Ccircle%20cx%3D%228%22%20cy%3D%229.5%22%20r%3D%223%22%20fill%3D%22%23FAFAFA%22%2F%3E%0A%20%20%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%223.4%22%20fill%3D%22%23EC4899%22%2F%3E%0A%20%20%3Ccircle%20cx%3D%2224%22%20cy%3D%229.5%22%20r%3D%223%22%20fill%3D%22%23FAFAFA%22%2F%3E%0A%20%20%3Ccircle%20cx%3D%228%22%20cy%3D%2222.5%22%20r%3D%223%22%20fill%3D%22%23FAFAFA%22%2F%3E%0A%20%20%3Ccircle%20cx%3D%2224%22%20cy%3D%2222.5%22%20r%3D%223%22%20fill%3D%22%23FAFAFA%22%2F%3E%0A%3C%2Fsvg%3E%0A">
+  <title>Developer learning roadmap</title>
+  <style nonce="ZVZvuaNWcdJPZYjle5_ThL35">
+    :root {
+      color-scheme: light dark;
+      --bg: #fafafa;
+      --surface: rgba(255, 255, 255, 0.92);
+      --surface-strong: #ffffff;
+      --ink: #09090b;
+      --muted: #475569;
+      --border: #e4e4e7;
+      --accent: #ec4899;
+      --accent-strong: #be185d;
+      --accent-2: #15803d;
+      --ready: #fff1f7;
+      --blocked: #f4f4f5;
+      --done: #ecfdf5;
+      --shadow: 0 20px 44px rgba(9, 9, 11, 0.09);
+      --shadow-soft: 0 8px 20px rgba(9, 9, 11, 0.06);
+      --radius: 24px;
+      --control-height: 36px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(236, 72, 153, 0.1), transparent 30rem),
+        radial-gradient(circle at 92% 3%, rgba(63, 63, 70, 0.08), transparent 26rem),
+        var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    button, input { font: inherit; }
+    button { color: inherit; }
+    a { color: var(--accent); }
+    ::selection { background: rgba(236, 72, 153, 0.2); }
+    h1, h2, h3 { font-family: ui-serif, Georgia, Cambria, "Times New Roman", serif; }
+
+    .shell {
+      width: min(1360px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 340px);
+      gap: 32px;
+      align-items: end;
+      min-height: 300px;
+      padding: clamp(28px, 5vw, 64px);
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.74);
+      color: var(--ink);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.55;
+      background-image: linear-gradient(rgba(63, 63, 70, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(63, 63, 70, 0.06) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(135deg, #000 8%, transparent 72%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      right: -80px;
+      top: -120px;
+      border: 1px solid rgba(236, 72, 153, 0.22);
+      border-radius: 50%;
+      box-shadow: 0 0 0 48px rgba(236, 72, 153, 0.04), 0 0 0 96px rgba(236, 72, 153, 0.025);
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent-strong);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: none;
+    }
+
+    h1 {
+      max-width: 840px;
+      margin: 0;
+      font-size: clamp(2.1rem, 5vw, 4.4rem);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .subtitle {
+      max-width: 760px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.7vw, 1.2rem);
+      max-width: 58ch;
+    }
+
+    .progress-card {
+      position: relative;
+      z-index: 1;
+      padding: 22px;
+      background: rgba(255, 255, 255, 0.86);
+      color: var(--ink);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .progress-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: baseline;
+    }
+
+    .progress-value { font-size: 2.35rem; font-weight: 850; letter-spacing: -0.05em; }
+    .progress-copy { color: var(--muted); }
+
+    .progress-track {
+      height: 10px;
+      margin-top: 16px;
+      overflow: hidden;
+      background: #e4e4e7;
+      border-radius: 999px;
+    }
+
+    .progress-fill {
+      width: 0;
+      height: 100%;
+      background: linear-gradient(90deg, #ec4899, #f9a8d4);
+      border-radius: inherit;
+      transition: width 160ms cubic-bezier(0.2, 0, 0, 1);
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 12px;
+      z-index: 30;
+      isolation: isolate;
+      overflow: visible;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin: 18px 0;
+      padding: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(14px);
+    }
+
+    .toolbar-spacer { flex: 1; }
+
+    .control {
+      min-height: var(--control-height);
+      padding: 7px 12px;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.86rem;
+      transition: background-color 80ms ease-out, color 80ms ease-out, transform 150ms ease-out, border-color 80ms ease-out;
+    }
+
+    @media (hover: hover) {
+      .control:hover { background: rgba(236, 72, 153, 0.08); }
+    }
+    .control:not(:disabled):active { transform: scale(0.96); }
+    .control[aria-pressed="true"], .control.primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(236, 72, 153, 0.24);
+    }
+    .control.secondary { border-color: var(--border); background: var(--surface-strong); }
+    .control.danger { color: #a3425e; }
+    .has-tooltip { position: relative; z-index: 1; }
+    .has-tooltip:hover,
+    .has-tooltip:focus-visible { z-index: 40; }
+    .has-tooltip::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      z-index: 50;
+      inset-block-start: calc(100% + 9px);
+      inset-inline-end: 0;
+      width: max-content;
+      max-width: min(280px, 70vw);
+      padding: 7px 9px;
+      border-radius: 8px;
+      background: var(--ink);
+      color: var(--surface-strong);
+      box-shadow: var(--shadow-soft);
+      font-size: 0.76rem;
+      font-weight: 600;
+      line-height: 1.35;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(-4px);
+      transition: opacity 80ms ease-out, transform 150ms ease-out;
+    }
+    @media (hover: hover) {
+      .has-tooltip:hover::after,
+      .has-tooltip:focus-visible::after {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .control:focus-visible, .node-check:focus-visible, .dependency-link:focus-visible, a:focus-visible {
+      outline: 3px solid rgba(236, 72, 153, 0.38);
+      outline-offset: 3px;
+    }
+    .graph-node:focus-visible, .list-node:focus-visible {
+      outline: 3px solid rgba(236, 72, 153, 0.38);
+      outline-offset: 3px;
+    }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(360px, 460px);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .panel {
+      min-width: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: clip;
+    }
+
+    .panel-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      padding: 18px 22px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    .panel-heading h2, .details h2 { margin: 0; font-size: 1.05rem; }
+    .panel-heading-tools { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; justify-content: flex-end; }
+    .legend { display: flex; flex-wrap: wrap; gap: 14px; color: var(--muted); font-size: 0.8rem; }
+    .legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .legend i { width: 9px; height: 9px; border-radius: 50%; background: var(--blocked); border: 1px solid var(--border); }
+    .legend .ready-dot { background: var(--accent); border-color: var(--accent); }
+    .legend .done-dot { background: var(--accent-2); border-color: var(--accent-2); }
+
+    .graph-scroll {
+      min-height: 620px;
+      overflow-x: hidden;
+      overflow-y: auto;
+      /* Keep graph vertical scrolling available without trapping page scroll. */
+      overscroll-behavior-y: auto;
+      border-radius: 0 0 var(--radius) var(--radius);
+      scrollbar-color: rgba(236, 72, 153, 0.32) transparent;
+    }
+
+    .graph-stage { position: relative; min-width: 100%; }
+    .graph-canvas {
+      position: relative;
+      background-image: radial-gradient(circle, rgba(63, 63, 70, 0.13) 1px, transparent 1px);
+      background-size: 24px 24px;
+      transform-origin: top left;
+    }
+
+    .graph-zoom { display: inline-flex; align-items: center; gap: 4px; }
+    .zoom-control { min-width: 34px; min-height: 32px; padding: 6px 9px; }
+    .zoom-level { min-width: 48px; color: var(--muted); font-size: 0.76rem; text-align: center; }
+
+    .edge-layer { position: absolute; inset: 0; overflow: visible; pointer-events: none; }
+    .edge { fill: none; stroke: #d4d4d8; stroke-width: 2; stroke-dasharray: 5 5; }
+    .edge.done { stroke: rgba(190, 24, 93, 0.68); stroke-dasharray: none; }
+
+    .graph-node {
+      position: absolute;
+      width: 244px;
+      height: 128px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 32px;
+      gap: 8px;
+      padding: 15px;
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 12px 30px rgba(9, 9, 11, 0.08);
+      transition: transform 150ms ease-out, border-color 80ms ease-out, opacity 80ms ease-out, box-shadow 150ms ease-out;
+      isolation: isolate;
+      cursor: pointer;
+    }
+
+    .graph-node::before {
+      content: "";
+      position: absolute;
+      inset-block: 12px;
+      inset-inline-start: -1px;
+      width: 3px;
+      border-radius: 0 4px 4px 0;
+      background: var(--border);
+    }
+    @media (hover: hover) {
+      .graph-node:hover { transform: translateY(-3px); box-shadow: 0 16px 34px rgba(9, 9, 11, 0.14); }
+    }
+    .graph-node[data-status="ready"] { border-color: rgba(236, 72, 153, 0.55); }
+    .graph-node[data-status="ready"]::before { background: var(--accent); }
+    .graph-node[data-status="done"] { background: var(--done); border-color: rgba(21, 128, 61, 0.48); }
+    .graph-node[data-status="done"]::before { background: var(--accent-2); }
+    .graph-node[data-status="blocked"] { background: var(--blocked); }
+    .graph-node.selected { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.18), 0 16px 34px rgba(9, 9, 11, 0.14); }
+    .graph-node.selected::before { background: var(--accent); }
+    .graph-node.filtered { opacity: 0.16; pointer-events: none; }
+
+    .node-main {
+      min-width: 0;
+      max-width: 100%;
+      padding: 0;
+      text-align: left;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      display: grid;
+      align-content: start;
+    }
+
+    .node-phase {
+      display: block;
+      min-width: 0;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: var(--muted);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .node-title {
+      display: -webkit-box;
+      min-width: 0;
+      max-width: 100%;
+      margin-top: 6px;
+      overflow: hidden;
+      overflow-wrap: anywhere;
+      font-size: 0.97rem;
+      font-weight: 820;
+      line-height: 1.24;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+    .node-status {
+      display: block;
+      min-width: 0;
+      max-width: 100%;
+      margin-top: 8px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-weight: 650;
+    }
+
+    .node-check {
+      width: 24px;
+      height: 24px;
+      margin: 0;
+      accent-color: var(--accent-2);
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    .details {
+      position: static;
+      max-height: none;
+      overflow: visible;
+      padding: 24px;
+    }
+
+    .details-empty { margin: 10px 0 0; color: var(--muted); }
+    .details-topic { margin: 0 0 6px; color: var(--muted); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+    .details-phase { margin: 0 0 7px; color: var(--accent); font-size: 0.75rem; font-weight: 850; letter-spacing: 0.09em; text-transform: uppercase; }
+    .details-summary { color: var(--muted); }
+    .details-section { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--border); }
+    .details-section h3 { margin: 0 0 8px; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .details-section ul { margin: 0; padding-left: 20px; }
+    .dependency-link {
+      padding: 0;
+      border: 0;
+      border-bottom: 1px dashed var(--accent);
+      background: transparent;
+      color: var(--accent-strong);
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+    .dependency-link:hover { color: var(--accent); }
+    .details-section ol { margin: 0; padding: 0; list-style: none; counter-reset: verification-step; }
+    .details-section code {
+      padding: 2px 5px;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      background: rgba(24, 24, 27, 0.06);
+      color: var(--text);
+      font: 0.9em/1.35 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+    .details-section .code-line { display: block; margin: 8px 0; }
+    .details-section .code-line code {
+      display: block;
+      width: fit-content;
+      max-width: 100%;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+    .details-section pre {
+      max-width: 100%;
+      margin: 8px 0 0;
+      padding: 10px 12px;
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: rgba(24, 24, 27, 0.06);
+    }
+    .details-section pre code { padding: 0; border: 0; background: transparent; }
+    .details-section.steps li { position: relative; padding-inline-start: 30px; }
+    .details-section.steps li::before {
+      content: counter(verification-step);
+      counter-increment: verification-step;
+      position: absolute;
+      inset-inline-start: 0;
+      inset-block-start: 1px;
+      display: grid;
+      width: 20px;
+      height: 20px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--ready);
+      color: var(--accent-strong);
+      font-size: 0.72rem;
+      font-weight: 800;
+    }
+    .details-section li + li { margin-top: 6px; }
+    .details-check { display: flex; gap: 10px; align-items: center; margin-top: 22px; padding: 12px 14px; background: var(--ready); border-radius: 12px; font-weight: 750; }
+    .details-check input { width: 20px; height: 20px; accent-color: var(--accent-2); }
+
+    .list-view { display: none; padding: 18px; }
+    .list-view.active { display: grid; gap: 12px; }
+    .graph-scroll.hidden { display: none; }
+
+    .list-node {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: start;
+      padding: 14px;
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: 0 4px 14px rgba(9, 9, 11, 0.04);
+      cursor: pointer;
+    }
+
+    .list-node[data-status="done"] { background: var(--done); }
+    .list-node.selected { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.14); }
+    .list-node.filtered { display: none; }
+    .list-node input { width: 20px; height: 20px; margin-top: 3px; accent-color: var(--accent-2); }
+    .list-node h3 { margin: 0; font-size: 1rem; }
+    .list-node p { margin: 5px 0 0; color: var(--muted); font-size: 0.88rem; }
+    .list-node .node-main { width: 100%; }
+    .status-pill { align-self: start; padding: 4px 9px; border-radius: 999px; background: var(--blocked); color: var(--muted); font-size: 0.72rem; font-weight: 800; white-space: nowrap; }
+    .status-pill.ready { background: rgba(236, 72, 153, 0.12); color: var(--accent-strong); }
+    .status-pill.done { background: rgba(19, 166, 141, 0.14); color: #087763; }
+
+    .storage-note {
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: 0.78rem;
+      text-align: center;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 980px) {
+      .hero, .workspace { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .shell { width: min(100% - 16px, 1360px); padding-top: 8px; }
+      .hero { padding: 24px; border-radius: 22px; }
+      .toolbar { align-items: stretch; }
+      .toolbar-spacer { display: none; }
+      .control { flex: 1 1 auto; }
+      .panel-heading { align-items: flex-start; flex-direction: column; }
+      .progress-card { width: 100%; }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #09090b;
+        --surface: rgba(24, 24, 27, 0.94);
+        --surface-strong: #27272a;
+        --ink: #fafafa;
+        --muted: #a1a1aa;
+        --border: #3f3f46;
+        --ready: #3b2031;
+        --blocked: #27272a;
+        --done: #173522;
+        --shadow: 0 22px 58px rgba(0, 0, 0, 0.34);
+        --shadow-soft: 0 10px 26px rgba(0, 0, 0, 0.24);
+      }
+      .panel-heading { background: rgba(255, 255, 255, 0.025); }
+      .hero { background: #18181b; color: #fafafa; border-color: #3f3f46; }
+      .hero::before { background-image: linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px); }
+      .eyebrow { color: #f9a8d4; }
+      .subtitle { color: #a1a1aa; }
+      .progress-card { background: #27272a; color: #fafafa; border-color: #3f3f46; }
+      .progress-copy { color: #a1a1aa; }
+      .progress-track { background: #3f3f46; }
+      .graph-node { box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22); }
+      .edge { stroke: #52525b; }
+      .status-pill.done { color: #7af1d3; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+    }
+
+    @media print {
+      body { background: #fff; color: #000; }
+      .shell { width: 100%; padding: 0; }
+      .toolbar, .details, .storage-note { display: none; }
+      .hero { color: #fff; box-shadow: none; }
+      .workspace { display: block; }
+      .panel { box-shadow: none; }
+      .graph-scroll { overflow: visible; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow" data-i18n="eyebrow">Developer learning roadmap</p>
+        <h1 id="roadmap-title">Roadmap</h1>
+        <p class="subtitle" id="roadmap-subtitle"></p>
+      </div>
+      <section class="progress-card" aria-labelledby="progress-label">
+        <div class="progress-line">
+          <span class="progress-value" id="progress-percent">0%</span>
+          <span class="progress-copy" id="progress-label" data-i18n="completedLabel">completed</span>
+        </div>
+        <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-track">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <p class="progress-copy" id="progress-count">0 of 0 capabilities</p>
+      </section>
+    </header>
+
+    <nav class="toolbar" aria-label="Roadmap controls" id="roadmap-controls">
+      <button class="control primary" type="button" data-view="graph" data-i18n="graph" aria-pressed="true">Graph</button>
+      <button class="control" type="button" data-view="list" data-i18n="list" aria-pressed="false">List</button>
+      <span class="toolbar-spacer"></span>
+      <button class="control" type="button" data-filter="all" data-i18n="all" aria-pressed="true">All</button>
+      <button class="control" type="button" data-filter="ready" data-i18n="ready" aria-pressed="false">Ready</button>
+      <button class="control" type="button" data-filter="blocked" data-i18n="blocked" aria-pressed="false">Blocked</button>
+      <button class="control" type="button" data-filter="done" data-i18n="completed" aria-pressed="false">Completed</button>
+      <button class="control danger has-tooltip" type="button" id="reset-progress" data-i18n="reset" data-tooltip-i18n="resetTooltip">Reset</button>
+    </nav>
+
+    <div class="workspace">
+      <section class="panel" aria-labelledby="map-heading">
+        <div class="panel-heading">
+          <h2 id="map-heading" data-i18n="dependencies">Knowledge dependencies</h2>
+          <div class="panel-heading-tools">
+            <div class="graph-zoom" role="group" data-i18n-aria-label="zoomControls" aria-label="Graph zoom">
+              <button class="control zoom-control has-tooltip" type="button" data-zoom="out" data-tooltip-i18n="zoomOut">−</button>
+              <span class="zoom-level" id="zoom-level" aria-live="polite">100%</span>
+              <button class="control zoom-control has-tooltip" type="button" data-zoom="in" data-tooltip-i18n="zoomIn">+</button>
+              <button class="control zoom-control has-tooltip" type="button" data-zoom="fit" data-tooltip-i18n="zoomFit">↺</button>
+            </div>
+            <div class="legend" aria-label="Status legend">
+              <span><i></i><b data-i18n="blocked">Blocked</b></span>
+              <span><i class="ready-dot"></i><b data-i18n="ready">Ready</b></span>
+              <span><i class="done-dot"></i><b data-i18n="completed">Completed</b></span>
+            </div>
+          </div>
+        </div>
+        <div class="graph-scroll" id="graph-scroll">
+          <div class="graph-stage" id="graph-stage">
+            <div class="graph-canvas" id="graph-canvas">
+              <svg class="edge-layer" id="edge-layer" aria-hidden="true"></svg>
+            </div>
+          </div>
+        </div>
+        <div class="list-view" id="list-view"></div>
+      </section>
+
+      <aside class="panel details" id="details-panel" aria-live="polite">
+        <h2 data-i18n="details">Capability details</h2>
+        <p class="details-empty" data-i18n="chooseNode">Choose a node to see practice and mastery criteria.</p>
+      </aside>
+    </div>
+
+    <p class="storage-note" id="storage-note" data-i18n="storageNote">Progress is stored only in this browser.</p>
+    <p class="sr-only" aria-live="polite" id="live-region"></p>
+  </main>
+
+  <script type="application/json" id="roadmap-data" nonce="ZVZvuaNWcdJPZYjle5_ThL35">{"schema_version":1,"language":"ru","id":"frontend-roadmap-test-ru","title":"Тестовый граф развития frontend-разработчика","subtitle":"От устройства веба к самостоятельной разработке фич","description":"Демонстрационный граф для проверки зависимостей, статусов, localStorage и экспорта прогресса. Это не персональный учебный план.","nodes":[{"id":"web-and-http","title":"Веб и HTTP","summary":"Понимать путь запроса: браузер, DNS, HTTP, сервер и ответ.","phase":"Фундамент веба","depends_on":[],"practice":["Открыть DevTools и выбрать запрос загрузки страницы во вкладке Network","Проверить URL, метод, статус, request/response headers и время ответа","Восстановить путь от ввода URL до получения ответа браузером","Сформулировать гипотезу об ошибке и проверить её по данным Network"],"mastery":["Умею объяснить назначение HTTP-метода, заголовков и кода ответа","Могу по данным Network найти место, где возникла ошибка","Могу отличить проблему DNS, соединения, сервера и клиентского кода"],"resources":[{"label":"MDN: HTTP overview","url":"https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview"}]},{"id":"browser-rendering","title":"Браузер и рендеринг","summary":"Связать загрузку HTML, CSS и JavaScript с построением и обновлением страницы.","phase":"Фундамент веба","depends_on":["web-and-http"],"practice":["Сравнить порядок загрузки нескольких ресурсов","Создать тестовую страницу с 1000 карточками и кнопкой `Изменить ширину`: обработчик кнопки должен по очереди менять `style.width` у каждой карточки","Открыть DevTools → Performance, записать профиль во время одного клика и найти на временной шкале событие Layout или Paint","Записать, сколько раз событие повторилось и какой обработчик его вызвал; затем изменить обработчик так, чтобы сначала вычислить значения, а потом применить их одним проходом","Повторить запись и сравнить число событий до и после; считать задачу выполненной, если причина названа по профилю, а улучшение подтверждено второй записью"],"mastery":["Объяснить критический путь рендеринга на конкретной странице","Сформулировать проверяемую гипотезу о проблеме производительности"],"resources":[{"label":"MDN: critical rendering path","url":"https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/Critical_rendering_path"}]},{"id":"html-accessibility","title":"Семантический HTML и доступность","summary":"Строить структуру страницы и формы, которыми можно пользоваться с клавиатуры и скринридером.","phase":"Интерфейс","depends_on":["browser-rendering"],"practice":["Сверстать форму с корректными label и состояниями ошибки","Проверить навигацию клавиатурой и accessibility tree"],"mastery":["Объяснить выбор семантического элемента","Исправить нарушение фокуса без добавления лишних ARIA-атрибутов"],"resources":[{"label":"MDN: accessibility","url":"https://developer.mozilla.org/en-US/docs/Learn/Accessibility"}]},{"id":"css-layout","title":"CSS и адаптивная вёрстка","summary":"Выбирать layout, каскад и точки перелома под поведение интерфейса.","phase":"Интерфейс","depends_on":["html-accessibility"],"practice":["Собрать responsive-карточки на Flexbox и Grid","Диагностировать конфликт специфичности и каскада"],"mastery":["Объяснить, почему конкретный элемент занял своё место","Адаптировать layout под новый размер без копирования блоков"],"resources":[{"label":"MDN: CSS layout","url":"https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout"}]},{"id":"javascript-execution","title":"JavaScript: выполнение и данные","summary":"Понимать области видимости, замыкания, типы данных и порядок выполнения кода.","phase":"Язык","depends_on":["browser-rendering"],"practice":["Предсказать результат примеров с замыканиями и this","Написать debounce и объяснить его состояние"],"mastery":["Предсказать порядок выполнения до запуска кода","Найти ошибку в преобразовании данных и объяснить её причину"],"resources":[{"label":"MDN: JavaScript guide","url":"https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide"}]},{"id":"dom-and-async","title":"DOM и асинхронность","summary":"Связывать события, DOM, Fetch, Promise и обработку ошибок в браузерной программе.","phase":"Язык","depends_on":["javascript-execution","html-accessibility"],"practice":["Сделать Todo-приложение без фреймворка с сохранением данных","Воспроизвести и исправить гонку ответов поиска"],"mastery":["Объяснить жизненный цикл асинхронного запроса","Обработать loading, error и empty-состояния без скрытых ошибок"],"resources":[{"label":"MDN: Fetch API","url":"https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API"}]},{"id":"typescript-modeling","title":"TypeScript и границы данных","summary":"Описывать состояния и API так, чтобы типы помогали увидеть неопределённость.","phase":"Язык","depends_on":["javascript-execution","dom-and-async"],"practice":["Типизировать ответ API и ошибки запроса","Заменить небезопасный any на unknown и сужение типа"],"mastery":["Выбрать между union, generic и interface для конкретной границы","Объяснить, какие проверки нужны в runtime, несмотря на типы"],"resources":[{"label":"TypeScript Handbook","url":"https://www.typescriptlang.org/docs/handbook/intro.html"}]},{"id":"react-rendering","title":"React: рендеринг и компоненты","summary":"Предсказывать, когда и почему компонент перерисовывается, и проверять гипотезу инструментами.","phase":"React","depends_on":["javascript-execution","html-accessibility"],"practice":["Разобрать поток props и state в небольшом дереве","Проверить лишний rerender через React DevTools Profiler"],"mastery":["Найти причину лишнего rerender","Объяснить, когда memoизация не решает проблему"],"resources":[{"label":"React: render and commit","url":"https://react.dev/learn/render-and-commit"}]},{"id":"react-state-architecture","title":"React: состояние и архитектура","summary":"Разделять локальное, общее, серверное и производное состояние между слоями приложения.","phase":"React","depends_on":["react-rendering","typescript-modeling","dom-and-async"],"practice":["Спроектировать состояние dashboard-фичи","Разобрать stale closure и cleanup в useEffect"],"mastery":["Для dashboard с фильтром, выбранной строкой и данными API нарисовать стрелки «источник → владелец → потребители» и по ним объяснить, где происходит каждое обновление","После требования «фильтр должен сохраняться в URL» изменить схему состояния и показать diff только затронутых компонентов, не переписывая загрузку данных"],"resources":[{"label":"React: managing state","url":"https://react.dev/learn/managing-state"}]},{"id":"testing-and-debugging","title":"Тестирование и отладка","summary":"Выбирать проверки по рискам и восстанавливать причинную цепочку при ошибке.","phase":"Надёжность","depends_on":["react-state-architecture","dom-and-async"],"practice":["Проверить optimistic update и откат при ошибке","Исправить намеренно сломанный тест по его наблюдаемому поведению"],"mastery":["Объяснить, какой риск ловит каждый тест","Локализовать дефект до изменения кода"],"resources":[{"label":"Testing Library: guiding principles","url":"https://testing-library.com/docs/guiding-principles"}]},{"id":"performance-diagnosis","title":"Диагностика производительности","summary":"Измерять проблему до выбора оптимизации рендера, загрузки или структуры данных.","phase":"Надёжность","depends_on":["react-rendering","react-state-architecture","browser-rendering"],"practice":["Профилировать таблицу с большим количеством строк","Сравнить memoизацию, виртуализацию и изменение формы данных"],"mastery":["Показать измерение до и после изменения","Объяснить стоимость и границы выбранной оптимизации"],"resources":[{"label":"web.dev: performance","url":"https://web.dev/learn/performance"}]},{"id":"independent-feature","title":"Самостоятельная фича","summary":"Доставить небольшую незнакомую фичу: от уточнения задачи до проверки, ревью и объяснения решений.","phase":"Интеграция","depends_on":["testing-and-debugging","performance-diagnosis","css-layout"],"practice":["Спланировать и реализовать фичу с loading, error и empty-состояниями","Провести короткое code review и зафиксировать компромиссы"],"mastery":["Объяснить архитектурные и эксплуатационные риски","Адаптировать решение после изменения требования"],"resources":[{"label":"React: thinking in React","url":"https://react.dev/learn/thinking-in-react"}]}],"storage_key":"developer-learning-roadmap:v1:frontend-roadmap-test-ru","generated_at":"2026-10-30T09:56:56+00:00"}</script>
+  <script nonce="ZVZvuaNWcdJPZYjle5_ThL35">
+    (() => {
+      "use strict";
+
+      const data = JSON.parse(document.getElementById("roadmap-data").textContent);
+      const messages = {
+        en: {
+          eyebrow: "Developer learning roadmap", completedLabel: "completed", graph: "Graph", list: "List",
+          all: "All", ready: "Ready", blocked: "Blocked", completed: "Completed", reset: "Reset",
+          resetTooltip: "Reset progress.",
+          zoomControls: "Graph zoom", zoomOut: "Zoom out", zoomIn: "Zoom in", zoomFit: "Fit graph to viewport",
+          dependencies: "Knowledge dependencies", details: "Capability details", topic: "Topic",
+          chooseNode: "Choose a node to see practice and mastery criteria.", storageNote: "Progress is stored only in this browser.",
+          readyStatus: "Ready to learn", blockedStatus: "Waiting for prerequisites", level: "Level", noSummary: "No summary provided.",
+          prerequisites: "Prerequisites", practice: "Verification task", mastery: "I understand this topic when", sources: "Sources",
+          markMastered: "Mark as mastered", capabilities: "capabilities", roadmapControls: "Roadmap controls",
+          markCompleted: "Mark completed", resetConfirm: "Reset all progress for this roadmap?", notCompleted: "not completed",
+          fallbackSubtitle: "A dependency map for observable mastery.", titleSuffix: "Roadmap",
+          fileStorage: "Progress uses browser storage. For reliable persistence, open this page from a local HTTP server.",
+          unavailableStorage: "Browser storage is unavailable, so progress may not persist after closing this page."
+        },
+        ru: {
+          eyebrow: "Roadmap обучения разработчика", completedLabel: "завершено", graph: "Граф", list: "Список",
+          all: "Все", ready: "Доступно", blocked: "Заблокировано", completed: "Завершено", reset: "Сбросить",
+          resetTooltip: "Сбросить прогресс", zoomControls: "Масштаб графа", zoomOut: "Уменьшить граф",
+          zoomIn: "Увеличить граф", zoomFit: "Вписать граф в область",
+          dependencies: "Зависимости знаний", details: "Описание компетенции", topic: "Тема",
+          chooseNode: "Выберите тему, чтобы увидеть практику и критерии mastery.", storageNote: "Прогресс хранится только в этом браузере.",
+          readyStatus: "Можно изучать", blockedStatus: "Сначала изучите предыдущие темы", level: "Уровень", noSummary: "Описание пока не добавлено.",
+          prerequisites: "Что нужно знать заранее", practice: "Задание для проверки", mastery: "Я разбираюсь в этой теме, если", sources: "Источники",
+          markMastered: "Отметить как освоенное", capabilities: "компетенций", roadmapControls: "Управление roadmap",
+          markCompleted: "Отметить как завершённое", resetConfirm: "Сбросить весь прогресс этого roadmap?", notCompleted: "не завершено",
+          fallbackSubtitle: "Граф зависимостей для проверяемого mastery.", titleSuffix: "Roadmap",
+          fileStorage: "Прогресс использует хранилище браузера. Для надёжного сохранения откройте страницу через локальный HTTP-сервер.",
+          unavailableStorage: "Хранилище браузера недоступно, поэтому прогресс может не сохраниться после закрытия страницы."
+        }
+      };
+      const copy = messages[data.language] || messages.en;
+      const t = (key) => copy[key] || messages.en[key] || key;
+      const nodesById = new Map(data.nodes.map((node) => [node.id, node]));
+      const graphCanvas = document.getElementById("graph-canvas");
+      const graphStage = document.getElementById("graph-stage");
+      const graphScroll = document.getElementById("graph-scroll");
+      const edgeLayer = document.getElementById("edge-layer");
+      const listView = document.getElementById("list-view");
+      const detailsPanel = document.getElementById("details-panel");
+      const liveRegion = document.getElementById("live-region");
+      let activeFilter = "all";
+      let selectedId = null;
+      let storageAvailable = true;
+      let graphSize = {width: 0, height: 0};
+      let zoomMode = "fit";
+      let zoomScale = 1;
+
+      const loadCompleted = () => {
+        try {
+          const parsed = JSON.parse(localStorage.getItem(data.storage_key) || "{}");
+          return new Set(Array.isArray(parsed.completed) ? parsed.completed.filter((id) => nodesById.has(id)) : []);
+        } catch (error) {
+          storageAvailable = false;
+          return new Set();
+        }
+      };
+
+      const completed = loadCompleted();
+
+      const save = () => {
+        try {
+          localStorage.setItem(data.storage_key, JSON.stringify({
+            schema_version: 1,
+            roadmap_id: data.id,
+            completed: [...completed].sort(),
+            updated_at: new Date().toISOString()
+          }));
+        } catch (error) {
+          storageAvailable = false;
+          document.getElementById("storage-note").textContent = t("unavailableStorage");
+        }
+      };
+
+      const statusFor = (node) => {
+        if (completed.has(node.id)) return "done";
+        return node.depends_on.every((id) => completed.has(id)) ? "ready" : "blocked";
+      };
+
+      const statusLabel = (status) => ({done: t("completed"), ready: t("readyStatus"), blocked: t("blockedStatus")}[status]);
+
+      const calculateLayers = () => {
+        const levels = new Map();
+        const visit = (id) => {
+          if (levels.has(id)) return levels.get(id);
+          const node = nodesById.get(id);
+          const level = node.depends_on.length ? Math.max(...node.depends_on.map(visit)) + 1 : 0;
+          levels.set(id, level);
+          return level;
+        };
+        data.nodes.forEach((node) => visit(node.id));
+        return levels;
+      };
+
+      const positions = new Map();
+      const effectiveZoom = () => {
+        if (zoomMode === "fit") {
+          const availableWidth = Math.max(1, graphScroll.clientWidth - 4);
+          return Math.min(1, availableWidth / graphSize.width);
+        }
+        return zoomScale;
+      };
+
+      const applyZoom = () => {
+        if (!graphSize.width) return;
+        const scale = effectiveZoom();
+        graphCanvas.style.transform = `scale(${scale})`;
+        graphStage.style.width = `${Math.max(graphScroll.clientWidth, graphSize.width * scale)}px`;
+        graphStage.style.height = `${graphSize.height * scale}px`;
+        document.getElementById("zoom-level").textContent = `${Math.round(scale * 100)}%`;
+      };
+
+      const buildGraph = () => {
+        const levels = calculateLayers();
+        const groups = new Map();
+        data.nodes.forEach((node) => {
+          const level = levels.get(node.id);
+          if (!groups.has(level)) groups.set(level, []);
+          groups.get(level).push(node);
+        });
+
+        const nodeWidth = 244;
+        const nodeHeight = 128;
+        const gapX = 42;
+        const gapY = 100;
+        const padding = 54;
+        const widest = Math.max(...[...groups.values()].map((items) => items.length));
+        const width = Math.max(720, padding * 2 + widest * nodeWidth + (widest - 1) * gapX);
+        const height = Math.max(620, padding * 2 + groups.size * nodeHeight + (groups.size - 1) * gapY);
+        graphSize = {width, height};
+        graphCanvas.style.width = `${width}px`;
+        graphCanvas.style.height = `${height}px`;
+        edgeLayer.setAttribute("viewBox", `0 0 ${width} ${height}`);
+        edgeLayer.setAttribute("width", width);
+        edgeLayer.setAttribute("height", height);
+
+        [...groups.entries()].sort(([a], [b]) => a - b).forEach(([level, items]) => {
+          const rowWidth = items.length * nodeWidth + (items.length - 1) * gapX;
+          const startX = (width - rowWidth) / 2;
+          items.forEach((node, index) => {
+            const x = startX + index * (nodeWidth + gapX);
+            const y = padding + level * (nodeHeight + gapY);
+            positions.set(node.id, {x, y});
+
+            const wrapper = document.createElement("div");
+            wrapper.className = "graph-node";
+            wrapper.dataset.nodeId = node.id;
+            wrapper.tabIndex = 0;
+            wrapper.setAttribute("role", "button");
+            wrapper.setAttribute("aria-label", node.title);
+            wrapper.style.left = `${x}px`;
+            wrapper.style.top = `${y}px`;
+
+            const main = document.createElement("div");
+            main.className = "node-main";
+
+            const phase = document.createElement("span");
+            phase.className = "node-phase";
+            phase.textContent = node.phase || `${t("level")} ${level + 1}`;
+            const title = document.createElement("span");
+            title.className = "node-title";
+            title.textContent = node.title;
+            const status = document.createElement("span");
+            status.className = "node-status";
+            main.append(phase, title, status);
+
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.className = "node-check";
+            checkbox.setAttribute("aria-label", `${t("markCompleted")}: ${node.title}`);
+            checkbox.addEventListener("change", () => setCompleted(node.id, checkbox.checked));
+            wrapper.addEventListener("click", (event) => {
+              if (event.target.closest(".node-check")) return;
+              showDetails(node.id);
+            });
+            wrapper.addEventListener("keydown", (event) => {
+              if ((event.key === "Enter" || event.key === " ") && event.target === wrapper) {
+                event.preventDefault();
+                showDetails(node.id);
+              }
+            });
+            wrapper.append(main, checkbox);
+            graphCanvas.append(wrapper);
+          });
+        });
+
+        drawEdges();
+        applyZoom();
+      };
+
+      const drawEdges = () => {
+        edgeLayer.replaceChildren();
+        data.nodes.forEach((node) => {
+          const target = positions.get(node.id);
+          node.depends_on.forEach((dependencyId) => {
+            const source = positions.get(dependencyId);
+            const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            const x1 = source.x + 115;
+            const y1 = source.y + 128;
+            const x2 = target.x + 115;
+            const y2 = target.y;
+            const midY = (y1 + y2) / 2;
+            path.setAttribute("d", `M ${x1} ${y1} C ${x1} ${midY}, ${x2} ${midY}, ${x2} ${y2}`);
+            path.classList.add("edge");
+            path.dataset.source = dependencyId;
+            path.dataset.target = node.id;
+            edgeLayer.append(path);
+          });
+        });
+      };
+
+      const buildList = () => {
+        data.nodes.forEach((node) => {
+          const item = document.createElement("article");
+          item.className = "list-node";
+          item.dataset.nodeId = node.id;
+          item.tabIndex = 0;
+          item.setAttribute("role", "button");
+          item.setAttribute("aria-label", node.title);
+
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.setAttribute("aria-label", `${t("markCompleted")}: ${node.title}`);
+          checkbox.addEventListener("change", () => setCompleted(node.id, checkbox.checked));
+
+          const content = document.createElement("div");
+          content.className = "node-main";
+          const title = document.createElement("h3");
+          title.textContent = node.title;
+          const summary = document.createElement("p");
+          summary.textContent = node.summary || t("noSummary");
+          content.append(title, summary);
+          item.addEventListener("click", (event) => {
+            if (event.target.closest("input")) return;
+            showDetails(node.id);
+          });
+          item.addEventListener("keydown", (event) => {
+            if ((event.key === "Enter" || event.key === " ") && event.target === item) {
+              event.preventDefault();
+              showDetails(node.id);
+            }
+          });
+
+          const status = document.createElement("span");
+          status.className = "status-pill";
+          item.append(checkbox, content, status);
+          listView.append(item);
+        });
+      };
+
+      const addList = (parent, heading, items, ordered = false) => {
+        if (!items.length) return;
+        const section = document.createElement("section");
+        section.className = "details-section";
+        if (ordered) section.classList.add("steps");
+        const title = document.createElement("h3");
+        title.textContent = heading;
+        const list = document.createElement(ordered ? "ol" : "ul");
+        items.forEach((item) => {
+          const entry = document.createElement("li");
+          appendFormattedText(entry, item);
+          list.append(entry);
+        });
+        section.append(title, list);
+        parent.append(section);
+      };
+
+      const addPrerequisites = (parent, ids) => {
+        if (!ids.length) return;
+        const section = document.createElement("section");
+        section.className = "details-section";
+        const title = document.createElement("h3");
+        title.textContent = t("prerequisites");
+        const list = document.createElement("ul");
+        ids.forEach((id) => {
+          const dependency = nodesById.get(id);
+          const entry = document.createElement("li");
+          const link = document.createElement("button");
+          link.type = "button";
+          link.className = "dependency-link";
+          link.textContent = dependency.title;
+          link.addEventListener("click", () => showDetails(id));
+          entry.append(link);
+          list.append(entry);
+        });
+        section.append(title, list);
+        parent.append(section);
+      };
+
+      const appendFormattedText = (parent, value) => {
+        const pattern = /(```([\s\S]*?)```|`([^`\n]+)`)/g;
+        let cursor = 0;
+        let match;
+        while ((match = pattern.exec(value))) {
+          if (match.index > cursor) parent.append(document.createTextNode(value.slice(cursor, match.index)));
+          if (match[1].startsWith("```")) {
+            const pre = document.createElement("pre");
+            const code = document.createElement("code");
+            code.textContent = match[2].trim();
+            pre.append(code);
+            parent.append(pre);
+          } else {
+            const line = document.createElement("span");
+            line.className = "code-line";
+            const code = document.createElement("code");
+            code.textContent = match[3];
+            line.append(code);
+            parent.append(line);
+          }
+          cursor = pattern.lastIndex;
+        }
+        if (cursor < value.length) parent.append(document.createTextNode(value.slice(cursor)));
+      };
+
+      const showDetails = (id) => {
+        selectedId = id;
+        const node = nodesById.get(id);
+        document.querySelectorAll("[data-node-id]").forEach((element) => {
+          element.classList.toggle("selected", element.dataset.nodeId === id);
+        });
+        detailsPanel.replaceChildren();
+        const phase = document.createElement("p");
+        phase.className = "details-phase";
+        phase.textContent = node.phase || statusLabel(statusFor(node));
+        const topic = document.createElement("p");
+        topic.className = "details-topic";
+        topic.textContent = t("topic");
+        const title = document.createElement("h2");
+        title.textContent = node.title;
+        const summary = document.createElement("p");
+        summary.className = "details-summary";
+        summary.textContent = node.summary || t("noSummary");
+        detailsPanel.append(phase, topic, title, summary);
+
+        addPrerequisites(detailsPanel, node.depends_on);
+        addList(detailsPanel, t("practice"), node.practice, true);
+        addList(detailsPanel, t("mastery"), node.mastery);
+
+        if (node.resources.length) {
+          const section = document.createElement("section");
+          section.className = "details-section";
+          const heading = document.createElement("h3");
+          heading.textContent = t("sources");
+          const list = document.createElement("ul");
+          node.resources.forEach((resource) => {
+            const item = document.createElement("li");
+            const link = document.createElement("a");
+            link.href = resource.url;
+            link.textContent = resource.label;
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+            item.append(link);
+            list.append(item);
+          });
+          section.append(heading, list);
+          detailsPanel.append(section);
+        }
+
+        const label = document.createElement("label");
+        label.className = "details-check";
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = completed.has(id);
+        checkbox.addEventListener("change", () => setCompleted(id, checkbox.checked));
+        const copy = document.createElement("span");
+        copy.textContent = t("markMastered");
+        label.append(checkbox, copy);
+        detailsPanel.append(label);
+      };
+
+      const setCompleted = (id, isComplete) => {
+        if (isComplete) completed.add(id); else completed.delete(id);
+        save();
+        refresh();
+        if (selectedId === id) showDetails(id);
+        liveRegion.textContent = `${nodesById.get(id).title}: ${isComplete ? t("completed") : t("notCompleted")}.`;
+      };
+
+      const refresh = () => {
+        document.querySelectorAll("[data-node-id]").forEach((element) => {
+          const node = nodesById.get(element.dataset.nodeId);
+          const status = statusFor(node);
+          element.dataset.status = status;
+          element.classList.toggle("filtered", activeFilter !== "all" && activeFilter !== status);
+          const checkbox = element.querySelector("input[type='checkbox']");
+          if (checkbox) checkbox.checked = completed.has(node.id);
+          const statusCopy = element.querySelector(".node-status");
+          if (statusCopy) statusCopy.textContent = statusLabel(status);
+          const pill = element.querySelector(".status-pill");
+          if (pill) {
+            pill.className = `status-pill ${status}`;
+            pill.textContent = statusLabel(status);
+          }
+        });
+
+        document.querySelectorAll(".edge").forEach((edge) => {
+          edge.classList.toggle("done", completed.has(edge.dataset.source) && completed.has(edge.dataset.target));
+        });
+
+        const percent = Math.round((completed.size / data.nodes.length) * 100);
+        document.getElementById("progress-percent").textContent = `${percent}%`;
+        document.getElementById("progress-count").textContent = `${completed.size} / ${data.nodes.length} ${t("capabilities")}`;
+        document.getElementById("progress-fill").style.width = `${percent}%`;
+        document.getElementById("progress-track").setAttribute("aria-valuenow", percent);
+      };
+
+      document.getElementById("roadmap-title").textContent = data.title;
+      document.title = `${data.title} · ${t("titleSuffix")}`;
+      const subtitle = document.getElementById("roadmap-subtitle");
+      subtitle.textContent = data.subtitle || data.description || t("fallbackSubtitle");
+      document.getElementById("roadmap-controls").setAttribute("aria-label", t("roadmapControls"));
+      document.querySelectorAll("[data-i18n]").forEach((element) => {
+        element.textContent = t(element.dataset.i18n);
+      });
+      document.querySelectorAll("[data-tooltip-i18n]").forEach((element) => {
+        const tooltip = t(element.dataset.tooltipI18n);
+        element.dataset.tooltip = tooltip;
+        element.title = tooltip;
+        element.setAttribute("aria-label", tooltip);
+      });
+      document.querySelectorAll("[data-i18n-aria-label]").forEach((element) => {
+        element.setAttribute("aria-label", t(element.dataset.i18nAriaLabel));
+      });
+
+      document.querySelectorAll("[data-filter]").forEach((button) => {
+        button.addEventListener("click", () => {
+          activeFilter = button.dataset.filter;
+          document.querySelectorAll("[data-filter]").forEach((item) => item.setAttribute("aria-pressed", item === button ? "true" : "false"));
+          refresh();
+        });
+      });
+
+      document.querySelectorAll("[data-view]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const graphMode = button.dataset.view === "graph";
+          document.getElementById("graph-scroll").classList.toggle("hidden", !graphMode);
+          listView.classList.toggle("active", !graphMode);
+          document.querySelectorAll("[data-view]").forEach((item) => {
+            item.setAttribute("aria-pressed", item === button ? "true" : "false");
+            item.classList.toggle("primary", item === button);
+          });
+        });
+      });
+
+      document.querySelectorAll("[data-zoom]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const current = effectiveZoom();
+          if (button.dataset.zoom === "fit") {
+            zoomMode = "fit";
+          } else {
+            zoomMode = "manual";
+            zoomScale = Math.min(2, Math.max(0.45, current + (button.dataset.zoom === "in" ? 0.1 : -0.1)));
+          }
+          applyZoom();
+        });
+      });
+
+      window.addEventListener("resize", () => {
+        if (zoomMode === "fit") applyZoom();
+      });
+
+      document.getElementById("reset-progress").addEventListener("click", () => {
+        if (!window.confirm(t("resetConfirm"))) return;
+        completed.clear();
+        save();
+        refresh();
+        if (selectedId) showDetails(selectedId);
+      });
+
+      buildGraph();
+      buildList();
+      refresh();
+      showDetails(data.nodes[0].id);
+
+      if (!storageAvailable || location.protocol === "file:") {
+        document.getElementById("storage-note").textContent = location.protocol === "file:"
+          ? t("fileStorage")
+          : t("unavailableStorage");
+      }
+    })();
+  </script>
+</body>
+</html>

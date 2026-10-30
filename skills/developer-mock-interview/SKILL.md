@@ -35,8 +35,9 @@ case at a time, wait for the answer, then adapt.
 
 ### 1. Establish the interview contract
 
-Reuse the conversation, a `Developer Work Context Card`, a roadmap, or exported
-roadmap progress. Ask only for missing fields that change the session:
+Reuse the conversation, a `Developer Work Context Card`, a roadmap, or a list of
+completed roadmap nodes already visible in the conversation. Ask only for
+missing fields that change the session:
 
 1. target role, specialty, technology, or responsibility level;
 2. source scope: completed roadmap nodes, selected topics, job description, or
@@ -50,10 +51,9 @@ Default to realistic mode and three cases when the user does not care. Explain
 that titles such as middle are organization-specific and state the observable
 responsibilities being tested.
 
-When the user supplies a roadmap progress export, read `completed_nodes` when
-present. If it contains only IDs, ask for the matching roadmap or use roadmap
-content already available in the conversation. Never guess what an opaque ID
-means.
+When the user supplies completed-node data, use node titles and roadmap content
+already available in the conversation. If it contains only opaque IDs, ask for
+the matching roadmap. Never guess what an opaque ID means.
 
 ### 2. Build a private coverage plan
 

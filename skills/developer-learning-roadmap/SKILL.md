@@ -1,6 +1,6 @@
 ---
 name: developer-learning-roadmap
-description: Design a detailed, evidence-based roadmap for learning a technology, growing toward a software role or responsibility level, or transitioning into another technical specialty. Use for requests such as "learn X", "become a middle developer", "move from frontend to data engineering", curriculum design, skill-gap analysis, or a multi-month study plan. Do not use to diagnose learning behavior or merely inventory work context.
+description: Design a detailed, evidence-based roadmap from a learning goal, a named technology, a book or course table of contents, growth toward a software role or responsibility level, or a transition into another technical specialty. Use for requests such as "learn X", "turn this book into a roadmap", "become a middle developer", "move from frontend to data engineering", curriculum design, skill-gap analysis, or a multi-month study plan. Do not use to diagnose learning behavior or merely inventory work context.
 ---
 
 # Developer Learning Roadmap
@@ -36,27 +36,36 @@ practice artifacts, feedback loops, and observable mastery checks.
 
 ## Workflow
 
-### 1. Establish the target and planning constraints
+### 1. Establish the source, target, and planning constraints
 
 Reuse a `Developer Work Context Card` when available. Otherwise ask one compact
 round of questions covering only missing information:
 
-1. goal type: technology, current-role growth, responsibility level, specialty
-   transition, or exploratory comparison;
-2. current role and evidence of relevant capabilities;
-3. target work, responsibilities, and representative tasks;
-4. reason for the goal and deadline or horizon;
-5. realistic hours and sessions per week, work constraints, and expected
+1. planning mode: goal-driven, source-driven (book, course, documentation), or
+   hybrid;
+2. source title, edition or version, table of contents, syllabus, or URL when
+   the user wants a source-driven roadmap;
+3. current role and evidence of relevant capabilities;
+4. target work, responsibilities, and representative tasks;
+5. reason for the goal and deadline or horizon;
+6. realistic hours and sessions per week, work constraints, and expected
    interruptions;
-6. access to production tasks, mentors, reviewers, courses, sandboxes, and
+7. access to production tasks, mentors, reviewers, courses, sandboxes, and
    project opportunities;
-7. required technologies, existing materials, and non-negotiable constraints;
-8. preferred output depth and whether the user wants a phase, monthly, or
+8. required technologies, existing materials, and non-negotiable constraints;
+9. preferred output depth and whether the user wants a phase, monthly, or
    weekly plan.
 
 Ask follow-up questions only when the answer would change the roadmap. If the
 user provides enough context, proceed without an intake interview. State any
 assumptions that materially affect scope or timing.
+
+For a book, course, or documentation source, read
+[references/source-derived-roadmap.md](references/source-derived-roadmap.md).
+Treat the source structure as an outline, not as proof that every chapter is a
+separate skill or that the order is optimal. Preserve chapter or module names as
+traceable phases, split them into observable capabilities, infer dependencies
+only when the concepts require them, and add practice and mastery evidence.
 
 ### 2. Research the capability map
 
@@ -130,6 +139,34 @@ For every phase define:
 Use the learner's diagnosed study loop when supplied. Without one, choose a
 provisional confidence-first loop and label its session settings as hypotheses
 to test for 1-2 weeks.
+
+When a learning profile is supplied, adapt the practice itself, not only the
+schedule. For a conceptual profile, begin each node with the problem, causal
+model, prediction, and a small falsifiable experiment; then move to guided
+implementation and transfer. For a procedural profile, provide the algorithm
+or worked example first and remove steps gradually. Keep both profiles tied to
+observable evidence and never use sensory learning-style labels.
+
+Make every practice task self-contained. Include the code, data, scenario, or
+source section needed to begin. Define a technical term before relying on it;
+do not ask the learner to “try several forms”, “use a similar example”, or
+“check the console” without giving the exact variants and expected observation.
+Before accepting a generated task, check four things: the learner can start
+without guessing the fixture; the action is concrete; the expected observation
+is named; and the completion evidence is clear. If any answer is “no”, rewrite
+the task before putting it into the roadmap.
+
+Use this minimum task contract:
+
+- **Context**: exact code, data, page, bug, or source section;
+- **Action**: numbered operations the learner performs;
+- **Expected observation**: what should appear, change, or be explainable;
+- **Evidence**: artifact, trace, test result, diagram, or explanation that
+  proves completion.
+
+Avoid standalone verbs such as “understand”, “explore”, “find”, “explain”, or
+“debug”. Attach each one to an object, scenario, operation, and observable
+result.
 
 ### 6. Make the roadmap adaptive
 

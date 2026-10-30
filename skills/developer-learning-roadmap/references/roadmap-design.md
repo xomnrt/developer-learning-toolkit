@@ -68,6 +68,12 @@ Each week should contain a coherent outcome rather than a bag of topics. Limit
 new concepts to what the practice task can exercise. Move optional breadth into
 a backlog.
 
+If the learning coach has supplied a profile, use its cognitive parameters to
+shape the task sequence. A conceptual learner needs a causal model and a
+prediction before implementation; a procedural learner may need a worked
+algorithm first. This changes the scaffolding and evidence, not the learner's
+identity or a sensory “learning style”.
+
 The detailed plan should answer:
 
 - what problem the learner is solving;

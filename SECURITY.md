@@ -19,11 +19,9 @@ The plugin itself does not add a remote destination. The host product's own
 privacy, retention, and workspace policies still apply.
 
 Generated roadmap pages may store completed node IDs in the browser's
-`localStorage`. The key is scoped to the roadmap ID. The page also supports a
-manual JSON export containing completed node IDs and titles. This data stays in
-the selected browser profile or exported file unless the user moves or shares
-it. Shared roadmaps and progress exports should use non-confidential titles and
-descriptions.
+`localStorage`. The key is scoped to the roadmap ID. This data stays in the
+selected browser profile unless the user moves or shares the browser profile or
+page data.
 
 The renderer reads one local JSON file and writes one requested HTML file. It
 uses the Python standard library, performs no network requests, rejects graph
@@ -78,9 +76,9 @@ should ask for the smallest useful detail and prefer generalized task
 descriptions. Users should review text before posting it in public issues or
 evaluation datasets.
 
-Roadmap exports can reveal career plans and perceived skill gaps. Mock-interview
-summaries can reveal performance evidence. Treat those files as personal data
-and review them before sharing.
+Roadmap progress can reveal career plans and perceived skill gaps.
+Mock-interview summaries can reveal performance evidence. Treat those outputs as
+personal data and review them before sharing.
 
 ### Supply-chain changes
 

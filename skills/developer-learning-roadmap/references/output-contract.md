@@ -9,6 +9,7 @@ organization-specific.
 Include:
 
 - current evidence;
+- source outline and traceability when the roadmap is source-driven;
 - target responsibilities and representative tasks;
 - horizon and weekly capacity;
 - sources of feedback;
@@ -91,6 +92,10 @@ facts and which are planning judgments. End with:
 - later backlog;
 - largest risks to completion or transfer;
 - the first concrete action.
+
+For a source-derived roadmap, distinguish source coverage from added practice,
+prerequisites, and transfer work. A chapter or completed lesson is not itself a
+mastery claim.
 
 ## 8. Optional interactive artifact
 

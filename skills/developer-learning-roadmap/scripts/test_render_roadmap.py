@@ -52,6 +52,7 @@ class RenderRoadmapTest(unittest.TestCase):
         )
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertIn("Content-Security-Policy", html)
+        self.assertIn("data:image/svg+xml,", html)
         self.assertIn("developer-learning-roadmap:v1:frontend-middle-demo", html)
         self.assertNotIn("Frontend </script>", html)
         self.assertIn("Frontend \\u003c/script\\u003e roadmap", html)

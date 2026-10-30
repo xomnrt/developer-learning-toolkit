@@ -12,13 +12,14 @@ import sys
 import tempfile
 from datetime import UTC, datetime
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import quote, urlparse
 
 
 MAX_INPUT_BYTES = 2_000_000
 MAX_NODES = 200
 ID_PATTERN = re.compile(r"^[a-z0-9][a-z0-9._-]{0,79}$")
 TEMPLATE_PATH = Path(__file__).resolve().parent.parent / "assets" / "roadmap-template.html"
+FAVICON_PATH = Path(__file__).resolve().parent.parent / "assets" / "favicon.svg"
 
 
 class ValidationError(ValueError):
@@ -176,17 +177,20 @@ def render(input_path: Path, output_path: Path) -> None:
 
     data = validate_roadmap(raw)
     template = TEMPLATE_PATH.read_text(encoding="utf-8")
+    favicon_data = quote(FAVICON_PATH.read_text(encoding="utf-8"), safe="")
     nonce = secrets.token_urlsafe(18)
     if (
         template.count("__ROADMAP_DATA__") != 1
         or template.count("__CSP_NONCE__") != 5
         or template.count("__LANG__") != 1
+        or template.count("__FAVICON_DATA__") != 1
     ):
         raise RuntimeError("roadmap template placeholders are missing or duplicated")
 
     html = template.replace("__ROADMAP_DATA__", safe_json_for_html(data))
     html = html.replace("__CSP_NONCE__", nonce)
     html = html.replace("__LANG__", data["language"])
+    html = html.replace("__FAVICON_DATA__", favicon_data)
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.NamedTemporaryFile(
